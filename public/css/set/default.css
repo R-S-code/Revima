@@ -1,0 +1,14 @@
+@import url("/css/_var.css");
+
+html {
+  background-color: white;
+}
+
+body {
+  background-color: var(--base-black);
+  color: var(--base-white);
+  font-family: 'Lato';
+  font-size: 14px;
+  margin: 0 auto;
+  max-width: 560px;
+}

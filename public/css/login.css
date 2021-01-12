@@ -1,0 +1,49 @@
+@import url("/css/set/_var.css");
+
+.login-container {
+  padding: 280px 20px 0;
+}
+.login-logo-top {
+  font-family: 'Roboto-Bold';
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+.login-input-userinfo {
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 35px;
+  padding-left: 14px;
+  width: 100%;
+}
+.login-input-userinfo::placeholder {
+  font-size: 14px;
+}
+.login-input-password {
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 10px;
+  padding-left: 14px;
+  width: 100%;
+}
+.login-input-password::placeholder {
+  font-size: 14px;
+}
+.login-btn-login {
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  color: var(--base-black);
+  height: 40px;
+  margin-top: 40px;
+  text-align: center;
+  width: 100%;
+}
+.login-create-account {
+  padding: 335px 0 40px;
+  text-align: center;
+}
+.login-txt-regist {
+  color:#669B9E;
+}
