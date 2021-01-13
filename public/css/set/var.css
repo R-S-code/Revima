@@ -1,0 +1,25 @@
+:root {
+  --base-black: #373737;
+  --base-white: #EFEFEF;
+  --base-yellow: #FFDE15;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('/fonts/Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Lato-Thin';
+  src: url('/fonts/Lato/Lato-Thin.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('/fonts/Roboto/Roboto-Bold.ttf');
+}

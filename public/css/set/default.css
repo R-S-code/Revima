@@ -7,7 +7,7 @@ html {
 body {
   background-color: var(--base-black);
   color: var(--base-white);
-  font-family: 'Lato';
+  font-family: 'Roboto';
   font-size: 14px;
   margin: 0 auto;
   max-width: 560px;

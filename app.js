@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
   host: arr.host,
   user: arr.dbuser,
   password: arr.dbpassword,
-  database: arr.db,e
+  database: arr.db,
 });
 
 app.use(
@@ -34,6 +34,14 @@ app.get('/login', (req, res) => {
 
 app.get('/regist', (req, res) => {
   res.render('regist.ejs');
+})
+
+app.get('/regist_done', (req, res) => {
+  res.render('regist_done.ejs');
+})
+
+app.get('/home', (req, res) => {
+  res.render('home.ejs');
 })
 
 let port = 3002;

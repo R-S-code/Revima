@@ -1,4 +1,4 @@
-@import url("/css/set/_var.css");
+@import url("/css/set/var.css");
 
 .regist-container {
   padding: 160px 20px 0;
@@ -38,7 +38,7 @@
   font-size: 14px;
 }
 .regist-input-password {
-  border: 1px solidvar(--base-white);
+  border: 1px solid var(--base-white);
   border-radius: 5px;
   height: 40px;
   margin-top: 10px;

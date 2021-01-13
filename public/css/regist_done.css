@@ -1,0 +1,35 @@
+@import url("/css/set/var.css");
+
+.regist-done-wrapper {
+  padding: 160px 0 320px;
+  text-align: center;
+}
+.regist-done-title {
+  color: var(--base-);
+  font-family: 'Roboto-Bold';
+  font-size: 24px;
+  margin-bottom: 70px;
+}
+.regist-done-message {
+  color: var(--base-white);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+}
+.regist-done-monster-hand {
+  display: block;
+  float: right;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 280px;
+}
+.regist-done-btn-to-top-wrapper {
+  padding: 0 20px;
+}
+.regist-done-btn-to-top {
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  color: var(--base-black);
+  height: 40px;
+  width: 100%;
+}
