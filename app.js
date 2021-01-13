@@ -8,12 +8,20 @@ app.set("view engine", "ejs");
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'musha',
-//   password: 'password',
-//   database: 'musha',
-// });
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'musha',
+  password: 'password',
+  database: 'musha',
+});
+
+const arr = require('./.db_sec_info.js');
+const connection = mysql.createConnection({
+  host: arr.host,
+  user: arr.dbuser,
+  password: arr.dbpassword,
+  database: arr.db,
+});
 
 app.use(
   session({
