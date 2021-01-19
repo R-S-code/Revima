@@ -1,0 +1,70 @@
+@import url("/css/set/var.css");
+
+.mypage-whole-wrapper {
+  padding: 0 20px 320px;
+}
+.mypage-info-board {
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px rgb(36, 36, 36);
+  display: flex;
+  height: 200px;
+  justify-content: space-evenly;
+  margin: 36px auto 0;
+  width: 325px;
+} 
+.mypage-first-container {
+  text-align: center;
+}
+.mypage-user-icon img {
+  border-radius: 50%;
+  width: 80px;
+}
+.mypage-user-name {
+  font-weight: 700;
+  margin-top: 15px;
+}
+.mypage-second-container {
+  text-align: center;
+}
+.mypage-second-container p:first-child {
+  margin-bottom: 5px;
+}
+.mypage-reserve-time {
+  font-family: 'Lato-Bold';
+  font-size: 18px;
+  margin-top: 10px;
+}
+.mypage-list-wrapper {
+  font-size: var(--base-font-size);
+  margin-top: 65px;
+  text-align: center;
+}
+.mypage-list-wrapper p {
+  margin-top: 40px;
+}
+.mypage-list-wrapper p:first-child {
+  margin-top: 0;
+}
+.mypage-logout-wrapper {
+  background-color: var(--base-yellow);
+  border-radius: 10px;
+  height: 165px;
+  margin: 0 auto;
+  padding: 50px 10px 10px;
+  text-align: center;
+  width: 372px;
+}
+.mypage-logout-title {
+  color: var(--base-black);
+}
+.mypage-logout-btn {
+  align-items: center;
+  background-color: var(--base-black);
+  border-radius: 5px;
+  color: var(--base-yellow);
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-top: 48px;
+}

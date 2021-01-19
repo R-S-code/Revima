@@ -155,6 +155,10 @@ app.get('/home', (req, res) => {
   res.render('home.ejs');
 })
 
+app.get('/mypage', (req, res) => {
+  res.render('mypage.ejs');
+})
+
 let port = 3002;
 console.log(`running ${port}`);
 app.listen(port);
