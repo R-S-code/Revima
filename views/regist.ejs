@@ -12,11 +12,18 @@
   <main class="regist-container">
     <h1 class="regist-logo-top"><a href="/">Revima</a></h1>
     <p class="regist-nowstep1">1/2</p>
-    <input type="text" placeholder="メールアドレス" class="regist-input-mailaddress"></input>
-    <input type="text" placeholder="ユーザーネーム" class="regist-input-username"></input>
-    <input type="password" placeholder="パスワード" class="regist-input-password"></input>
-    <input type="password" placeholder="パスワード再入力" class="regist-input-password"></input>
-    <button class="regist-btn-next">次へ</button>
+    <!-- <input type="text" placeholder="メールアドレス" class="regist-input-mailaddress"></input> -->
+    <% if(errors.length > 0) { %>
+      <% errors.forEach((error) => { %>
+        <p class="subscribe-error"><%= error %></p><br>
+      <% }); %>
+    <% } %>
+    <form action="/regist" method="post">
+      <input type="text" name="regist_username" placeholder="ユーザーネーム" class="regist-input-username"></input>
+      <input type="password" name="regist_password" placeholder="パスワード" class="regist-input-password"></input>
+      <input type="password" name="regist_again_password" placeholder="パスワード再入力" class="regist-input-password"></input>
+      <button type="submit" class="regist-btn-next">次へ</button>
+    </form>
     <p class="regist-reccomend-login">すでにアカウントを持っている場合 <span class="regist-txt-login"><a href="/login">ログインはこちらから</a></span></p>
   </main>
 </body>

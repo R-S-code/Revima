@@ -11,6 +11,11 @@
 <body>
   <main class="login-container">
     <h1 class="login-logo-top"><a href="/">Revima</a></h1>
+    <% if(errors.length > 0) { %>
+      <% errors.forEach((error) => { %>
+        <p class="subscribe-error"><%= error %></p><br>
+      <% }); %>
+    <% } %>
     <form action="" method="post">
       <input type="text" name="login-name"placeholder="メールアドレス、ユーザーネーム" class="login-input-userinfo"></input>
       <input type="password" name="login-password" placeholder="パスワード" class="login-input-password"></input>

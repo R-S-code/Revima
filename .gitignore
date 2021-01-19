@@ -1,2 +1,3 @@
 node_modules
 .db_sec_info.js
+dbinfo.sql
