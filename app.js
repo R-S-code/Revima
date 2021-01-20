@@ -157,7 +157,8 @@ app.get('/home', (req, res) => {
 
 app.get('/introduce_movie', (req, res) => {
   res.render('introduce_movie.ejs');
-  
+})
+
 app.get('/mypage', (req, res) => {
   res.render('mypage.ejs');
 })

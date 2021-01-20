@@ -1,25 +1,26 @@
 @import url("/css/set/var.css");
 
-.introduce_movie-title{
+.introduce-movie-whole-wrapper {
+  padding: 0 20px 30px;
+}
+.introduce-movie-title{
   font-size: 24px;
+  font-weight: 700;
   text-align: center;
   margin-top: 30px;
-  font-weight: 800;
 }
-.introduce_movie-movie-img{
-  width: 264px;
-  height: 395px;
-  margin-left:24% ;
+.introduce-movie-movie-img {
   margin-top: 30px;
-  box-shadow: 4px 7px 6px rgb(38, 38, 38);
+  text-align: center;
 }
-.introduce_movie-story-text{
+.introduce-movie-movie-img img {
+  width: 265px;
+}
+.introduce-movie-story-text{
   line-height: 30px;
-  margin-left: 15px;
   margin-top: 30px;
-  width: 95%;
 }
-.introduce_movie-vote{
+.introduce-movie-vote{
   background-color: var(--base-yellow);
   border-radius: 5px;
   color: #252525;
@@ -27,8 +28,6 @@
   font-weight: 700;
   height: 64px;
   margin: 40px auto 0;
-  margin-left: 15px;
-  margin-bottom: 30px;
   text-align: center;
-  width: 95%;
+  width: 100%;
 }
