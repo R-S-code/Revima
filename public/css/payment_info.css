@@ -1,1 +1,46 @@
 @import url("/css/set/var.css");
+
+
+.payment-info-whole-wrapper {
+  padding: 35px 20px 55px;
+}
+.payment-info-title {
+  font-weight: 700;
+}
+.payment-info-creditcard-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.payment-info-creditcard-number {
+  align-items: center;
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-top: 5px;
+  padding: 0 10px;
+  width: 80%;
+}
+.payment-info-edit {
+  color: var(--base-blue);
+  margin-left: 10px;
+  white-space: nowrap;
+}
+.payment-info-delete {
+  color: var(--base-red);
+  margin-left: 10px;
+  white-space: nowrap;
+}
+.payment-info-add-creditcard {
+  align-items: center;
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 0 10px;
+  width: 80%;
+}

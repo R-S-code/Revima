@@ -163,6 +163,10 @@ app.get('/mypage', (req, res) => {
   res.render('mypage.ejs');
 })
 
+app.get('/payment_info', (req, res) => {
+  res.render('payment_info.ejs');
+})
+
 let port = 3002;
 console.log(`running ${port}`);
 app.listen(port);
