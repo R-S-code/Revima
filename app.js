@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended: false}));
 
 const arr = require('./.db_sec_info.js');
 const connection = mysql.createConnection({
-  host: arr.host,
+ host: arr.host,
   user: arr.dbuser,
   password: arr.dbpassword,
   database: arr.db,
@@ -155,6 +155,9 @@ app.get('/home', (req, res) => {
   res.render('home.ejs');
 })
 
+app.get('/introduce_movie', (req, res) => {
+  res.render('introduce_movie.ejs');
+  
 app.get('/mypage', (req, res) => {
   res.render('mypage.ejs');
 })
