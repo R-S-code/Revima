@@ -8,3 +8,34 @@
   <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
   <link rel="stylesheet" type="text/css" href="/css/mypage.css" />
 </head>
+
+<body>
+  <%- include("./set/header"); %>
+  <div class="mypage-whole-wrapper">
+    <div class="mypage-info-board">
+      <div class="mypage-first-container">
+        <div class="mypage-user-icon">
+          <img src="/usericon/usericon1.png">
+        </div>
+        <p class="mypage-user-name">トム</p>
+      </div>
+      <div class="mypage-second-container">
+        <p>2020/12/15</p>
+        <p>ターミナル</p>
+        <p class="mypage-reserve-time">21:00</p>
+      </div>
+    </div>
+    <div class="mypage-list-wrapper">
+      <p>ユーザー情報変更</p>
+      <p>支払い情報</p>
+      <p>ログアウト</p>
+      <p>退会</p>
+    </div>
+    
+    <div class="mypage-logout-wrapper">
+      <h1 class="mypage-logout-title">ログアウトしますか?</h1>
+      <p class="mypage-logout-btn">ログアウト</p>
+    </div>
+  </div>
+</body>
+</html>
