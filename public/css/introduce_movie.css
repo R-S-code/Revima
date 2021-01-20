@@ -4,16 +4,17 @@
   font-size: 24px;
   text-align: center;
   margin-top: 30px;
+  font-weight: 800;
 }
 .introduce_movie-movie-img{
-  background-color:white;
   width: 264px;
   height: 395px;
-  margin-left:150px ;
+  margin-left:24% ;
   margin-top: 30px;
+  box-shadow: 4px 7px 6px rgb(38, 38, 38);
 }
 .introduce_movie-story-text{
-  line-height: 20px;
+  line-height: 30px;
   margin-left: 15px;
   margin-top: 30px;
   width: 95%;
