@@ -1,0 +1,59 @@
+@import url("/css/set/var.css");
+
+.payment-info-whole-wrapper {
+  padding: 35px 20px 55px;
+}
+.payment-info-title {
+  font-weight: 700;
+}
+.payment-info-creditcard-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.payment-info-creditcard-number {
+  align-items: center;
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-top: 5px;
+  padding: 0 10px;
+  width: 80%;
+}
+.payment-info-edit {
+  color: var(--base-blue);
+  margin-left: 10px;
+  white-space: nowrap;
+}
+.payment-info-delete {
+  color: var(--base-red);
+  margin-left: 10px;
+  margin-right: 5px;
+  white-space: nowrap;
+}
+.payment-info-add-creditcard {
+  align-items: center;
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  line-height: 24px;
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+.payment-info-goto-mypage {
+  align-items: center;
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  color: var(--base-black);
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-top: 495px;
+  width: 100%;
+}

@@ -1,0 +1,33 @@
+@import url("/css/set/var.css");
+
+.introduce-movie-whole-wrapper {
+  padding: 0 20px 30px;
+}
+.introduce-movie-title{
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 30px;
+}
+.introduce-movie-movie-img {
+  margin-top: 30px;
+  text-align: center;
+}
+.introduce-movie-movie-img img {
+  width: 265px;
+}
+.introduce-movie-story-text{
+  line-height: 30px;
+  margin-top: 30px;
+}
+.introduce-movie-vote{
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  color: #252525;
+  font-size: 18px;
+  font-weight: 700;
+  height: 64px;
+  margin: 40px auto 0;
+  text-align: center;
+  width: 100%;
+}

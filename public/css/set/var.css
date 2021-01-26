@@ -1,7 +1,10 @@
 :root {
   --base-black: #373737;
   --base-white: #EFEFEF;
+  --base-gray: #c4c4c4;
   --base-yellow: #FFDE15;
+  --base-red: #D45555;
+  --base-blue: #669B9E;
 }
 
 @font-face {
@@ -12,6 +15,11 @@
 @font-face {
   font-family: 'Lato-Thin';
   src: url('/fonts/Lato/Lato-Thin.ttf');
+}
+
+@font-face {
+  font-family: 'Lato-Bold';
+  src: url('/fonts/Lato/Lato-Bold.ttf');
 }
 
 @font-face {
