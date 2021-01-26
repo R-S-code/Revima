@@ -3,30 +3,31 @@
   font-family: 'Lato','Roboto',sans-serif;
 }
 .top-login{
-  background-color: #222;
-  
+ 
 }
 .top-login-wrapper{
   margin: 0 auto;
   max-width: 560px;
+  background-color: var(--base-black);
+  
 }
 
 .top-login h1{
-  color: #EEE;
+  color: var(--base-white);
 }
 .top-login p{
-  color: #EEE;
+  color: var(--base-white);
   padding: 20px;
   margin: 0;
 }
 .top-login a{
-  color: #EEE;
+  color: var(--base-white);
   display: inline-block;
   text-decoration: none;
 }
 
 .top-login img{
-  color: #EEE;
+  color: var(--base-white);
   font-size: 12px;
   height: auto;
 }
@@ -139,6 +140,7 @@
 .top-login-copyright {
   color: var(--base-white);
   display: inline-block;
+  padding: 20px;
   text-align: center;
   width: 100%;
 }
