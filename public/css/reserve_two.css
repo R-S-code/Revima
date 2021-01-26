@@ -1,0 +1,65 @@
+@import url("/css/set/var.css");
+
+.reserve-two-whole-wrapper {
+  padding: 35px 20px 55px;
+}
+.reserve-two-movieinfo-wrapper {
+  display: flex;
+}
+.reserve-two-movieinfo-two-wrapper {
+  margin-left: auto;
+}
+.reserve-two-movieinfo-one-wrapper p:first-child {
+  color: var(--base-gray);
+  font-size: 12px;
+}
+.reserve-two-movieinfo-two-wrapper p:first-child {
+  color: var(--base-gray);
+  font-size: 12px;
+}
+.reserve-two-seatstate-wrapper {
+  display: flex;
+  margin-top: 45px
+}
+.reserve-two-seatstate-container {
+  align-items: center;
+  display: flex;
+  margin-left: 35px;
+}
+.reserve-two-seatstate-container p {
+  margin-left: 5px;
+}
+.reserve-two-seatstate-container:first-child {
+  margin-left: 0;
+}
+.reserve-two-blueseat {
+  background-color: var(--base-blue);
+  border-radius: 3px;
+  height: 32px;
+  width: 24px;
+}
+.reserve-two-grayseat {
+  background-color: var(--base-gray);
+  border-radius: 3px;
+  height: 32px;
+  width: 24px;
+}
+.reserve-two-yellowseat {
+  background-color: var(--base-yellow);
+  border-radius: 3px;
+  height: 32px;
+  width: 24px;
+}
+.reserve-two-selectseat-wrapper {
+  border: 1px solid #EFEFEF; 
+  height: 390px;
+  margin: 22px auto 0;
+  padding: 42px 0;
+  width: 100%;
+}
+.reserve-two-screenline {
+  text-align: center
+}
+.reserve-two-screenline img {
+  width: 240px;
+}

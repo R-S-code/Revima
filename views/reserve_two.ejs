@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>座席指指定</title>
+  <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
+  <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/reserve_two.css" />
+</head>
+<body>
+  <%- include("./set/header"); %>
+
+  <main class="reserve-two-whole-wrapper">
+    <div class="reserve-two-movieinfo-wrapper">
+      <div class="reserve-two-movieinfo-one-wrapper">
+        <p>作品</p>
+        <p>ターミナル</p>
+      </div>
+      <div class="reserve-two-movieinfo-two-wrapper">
+        <p>日時</p>
+        <p>2020/12/15(火)21:00-</p>
+      </div>   
+    </div>
+
+    <div class="reserve-two-seatstate-wrapper">
+      <div class="reserve-two-seatstate-container">
+        <div class="reserve-two-blueseat"></div>
+        <p>空席</p>
+      </div>
+
+      <div class="reserve-two-seatstate-container">
+        <div class="reserve-two-grayseat"></div>
+        <p>満席</p>
+      </div>
+
+      <div class="reserve-two-seatstate-container">
+        <div class="reserve-two-yellowseat"></div>
+        <p>選択した席</p>
+      </div>
+    </div>
+
+    <div class="reserve-two-selectseat-wrapper">
+      <div class="reserve-two-screenline">
+        <img src="/images/screen_line.png">
+      </div>
+    </div>
+
+    <p class="reserve-two-selectseat-wrapper">支払いに進む</p>
+  </main>
+</body>
+</html>
