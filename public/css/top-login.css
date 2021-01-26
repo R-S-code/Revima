@@ -9,16 +9,13 @@
   margin: 0 auto;
   max-width: 560px;
   background-color: var(--base-black);
-  
 }
 
 .top-login h1{
   color: var(--base-white);
 }
-.top-login p{
+.top-login main p{
   color: var(--base-white);
-  padding: 20px;
-  margin: 0;
 }
 .top-login a{
   color: var(--base-white);
@@ -47,7 +44,7 @@
   }
 
 .top-login section{
-  margin: 0 0 80px;
+  margin: 0px 0 100px;
 }
 
 .top-login-greet {
@@ -83,13 +80,15 @@
   background-color:  var(--base-yellow);
   border-radius: 7px;
   height: 40px;
-  margin: 0 10%;
-  width: 80%;
+  margin: 0 0%;
+  
+  width: 100%;
   
 }
 .top-login-reserve button a{
   border-radius: 7px;
   color:  var(--base-black);
+  font-size: 14px;
   line-height: 40px;
   padding: 0;
   text-align: center;
@@ -98,6 +97,7 @@
 
 .top-login-vote{
   padding: 0 20px;
+  margin-top: 20px;
   max-width: 560px;
   min-width: 320px;
   overflow: hidden;
@@ -105,7 +105,7 @@
 .top-login-vote-list {
   display: flex;
   justify-content: center;
-  margin: 20px 0 0 -50%;
+  margin: 20px 0 20px -50%;
   padding: 0;
   width: 200%;
 }
@@ -124,13 +124,14 @@
   background-color: var(--base-yellow);
   border-radius: 7px;
   height: 40px;
-  margin: 0 10%;
-  width: 80%;
+  margin: 0 ;
+  width: 100%;
   
 }
 .top-login-vote button a{
   border-radius: 7px;
   color: var(--base-black);
+  font-size: 14px;
   line-height: 40px;
   padding: 0;
   text-align: center;
