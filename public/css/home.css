@@ -1,1 +1,85 @@
 @import url("/css/set/var.css");
+
+.home-whole-wrapper {
+  padding-top: 55px;
+}
+.home-greet {
+  font-weight: 700;
+  margin-left: 20px;
+}
+.home-reserve{
+  padding: 0 20px;
+}
+.home-reserve-list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.home-reserve-list li a img{
+  width: 100px;
+}
+@media screen and (max-width: 340px) {
+  .home-reserve-list li a img{
+    width: 100%;
+  }
+}
+.home-reserve button{
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  display: block;
+  height: 40px;
+  margin-top: 25px;
+  text-align: center;
+  width: 100%;
+}
+.home-reserve button a{
+  color: var(--base-black);
+}
+.home-vote {
+  margin-top: 65px;
+  overflow: hidden;
+}
+.home-vote-list {
+  display: flex;
+  justify-content: space-between;
+  margin-left: -8%;
+  width: 116%;
+}
+.home-vote-list li a img{
+  width: 100px;
+}
+@media screen and (max-width: 420px) {
+  .home-vote-list li:last-child{
+    display: none;
+  }
+}
+@media screen and (max-width: 340px) {
+  .home-vote-list li a img{
+    width: 100%;
+  }
+}
+.home-vote-btn-wrapper {
+  padding: 0 20px;
+}
+.home-vote button{
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  display: block;
+  height: 40px;
+  margin: 25px auto 0;
+  text-align: center;
+  width: 100%;
+}
+.home-vote button a{
+  color: var(--base-black);
+}
+.home-copyright {
+  color: var(--base-white);
+  display: inline-block;
+  font-size: 12px;
+  font-family: 'Lato-Bold';
+  margin-top: 140px;
+  margin-bottom:  40px;
+  text-align: center;
+  width: 100%;
+}

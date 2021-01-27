@@ -1,13 +1,59 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=¥, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
-  <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
-  <link rel="stylesheet" type="text/css" href="/css/home.css" />
+	<link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
+	<link rel="stylesheet" type="text/css" href="/css/set/default.css" />
+	<link rel="stylesheet" type="text/css" href="/css/home.css" />
+	<meta
+		name="viewport"
+		content="width=device-width,user-scalable=yes,shrink-to-fit=yes"
+	/>
+	<title>ホーム</title>
 </head>
 <body>
-  <p>ホームでーす</p>
+	<%- include("./set/header"); %>
+	<main class="home-whole-wrapper">
+		<p class="home-greet">こんにちは、トムさん</p>
+		<section class="home-reserve">
+			<ul class="home-reserve-list">
+				<li>
+					<a href="#"><img src="images/movie1.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/movie2.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/movie3.png" alt="" /></a>
+				</li>
+			</ul>
+			<button><a href="#">予約する</a></button>
+		</section>
+		<section class="home-vote">
+			<ul class="home-vote-list">
+				<li>
+					<a href="#"><img src="images/movie1.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/movie2.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/movie3.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/movie4.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/movie5.png" alt="" /></a>
+				</li>
+				
+			</ul>
+			<div class="home-vote-btn-wrapper">
+				<button><a href="#">投票する</a></button>
+			</div>
+		</section>
+	</main>
+	<footer>
+		<p class="home-copyright">©Revima</p>
+	</footer>
 </body>
+</html>

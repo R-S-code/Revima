@@ -63,3 +63,26 @@
 .reserve-two-screenline img {
   width: 240px;
 }
+.reserve-two-seatnum-wrapper {
+  display: flex;
+  margin: 40px auto 0;
+  width: 220px;
+}
+.reserve-two-seatnum-wrapper p:last-child {
+  margin-left: auto;
+}
+.reserve-two-line1-wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin: 5px auto 0;
+  width: 235px;
+}
+/* .reserve-two-line1-wrapper::before {
+  content: "A";
+} */
+.reserve-two-line1-wrapper div {
+  background-color: var(--base-gray);
+  border-radius: 3px;
+  height: 32px;
+  width: 24px;
+}
