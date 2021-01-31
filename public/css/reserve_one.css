@@ -1,0 +1,16 @@
+@import url("/css/set/var.css");
+
+.reserve-one-whole-wrapper {
+  padding: 33px 20px 0;
+}
+.reserve-one-title-title {
+  font-weight: 700;
+}
+.reserve-one-selected-movie {
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 7px;
+  padding-left: 13px;
+  width: 100%;
+}

@@ -1,0 +1,34 @@
+@import url("/css/set/var.css");
+
+.change-info-whole-wrapper {
+  padding: 35px 20px 55px;
+}
+.change-info-username {
+  font-family: 'Lato-Bold';
+}
+.change-info-input-username {
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 3px;
+  width: 100%;
+}
+.change-info-profile {
+  font-family: 'Lato-Bold';
+  margin-top: 20px;
+}
+.chage-info-profilepic-wrapper {
+  margin-top: 30px;
+}
+.chage-info-profilepic-wrapper img {
+  width: 80px;
+}
+.chage-info-mypage-btn {
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  color: var(--base-black);
+  height: 40px;
+  margin-top: 465px;
+  text-align: center;
+  width: 100%;
+}

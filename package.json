@@ -12,11 +12,15 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "browser-sync": "^2.26.14",
+    "nodemon": "^2.0.6",
+    "npm-run-all": "^4.1.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "npm-run-all --parallel start:*",
+    "start:nodemon": "nodemon app.js",
+    "start:sync": "browser-sync start --config bs-config.js"
   },
   "author": "rs",
   "license": "ISC"

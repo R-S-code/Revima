@@ -1,6 +1,7 @@
 @import url("/css/set/var.css");
 
 .top-contents {
+  overflow: hidden;
   padding: 0 20px 40px;
 }
 .top-catch-copy {
@@ -29,17 +30,14 @@
   text-align: center;
   width: 100%;
 }
-.top-demo-box-container {
+.top-moviepic-container {
   display: flex;
-  justify-content: center;
-  overflow: hidden;
+  justify-content: space-between;
   margin-top: 50px;
+  margin-left: -10%;
+  width: 120%;
 }
-.top-demo-box  {
-  flex: none;
-  background-color: var(--base-white);
-  height: 168px;
-  margin-right: 5px;
+.top-moviepic-container img {
   width: 100px;
 }
 .top-footer {

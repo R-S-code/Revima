@@ -24,6 +24,19 @@ app.use(
   })
 );
 
+app.use((req, res, next) => {
+  if (req.session.userId === undefined) {
+    console.log('ログインしていません');
+    res.locals.isLoggedIn = false;
+  } else {
+    console.log('ログインしています');
+    res.locals.username = req.session.username;
+    res.locals.isLoggedIn = true;
+  }
+  next();
+});
+
+
 app.get('/', (req, res) => {
   res.render('top.ejs');
 })
@@ -53,7 +66,7 @@ app.post('/login',
   const username = req.body.login_username;
   const errors = [];
   connection.query(
-    'SELECT * FROM users WHERE username = ?',
+    'SELECT * FROM users WHERE name = ?',
     [username],
     (error, results) => {
       if (results.length > 0) {
@@ -62,9 +75,10 @@ app.post('/login',
         bcrypt.compare(plain_password, hash_password, (error, isEqual) => {
           if (isEqual){
             console.log('認証に成功しました');          
-            req.session.userId = results[0].id;
-            req.session.username = results[0].username;
-            res.redirect('/');
+            req.session.userId = results[0].userid;
+            req.session.username = results[0].name;
+            console.log(results);
+            res.redirect("/home");
           } else {
             console.log('認証に失敗しました');
             errors.push('パスワードが違います');
@@ -73,10 +87,16 @@ app.post('/login',
         });
       } else {
         errors.push('ユーザーが存在しません');
-        res.render('login.ejs', {errors: errors});
+        res.render('login.ejs', {errors: errors });
       }
     }
   )
+});
+
+app.get('/logout', (req, res) => {
+  req.session.destroy((error) => {
+    res.redirect('/');
+  });
 });
 
 app.get('/regist', (req, res) => {
@@ -95,7 +115,7 @@ app.post('/regist',
     if (password === '' || again_password === '') {
       errors.push('パスワードが入力されていません');
     }
-    if (!password == again_password) {
+    if (password !== again_password) {
       errors.push('パスワードが異なっています');
     }
     if (password.length <= 3) {
@@ -167,8 +187,20 @@ app.get('/payment_info', (req, res) => {
   res.render('payment_info.ejs');
 })
 
+app.get('/change_info', (req, res) => {
+  res.render('change_info.ejs');
+})
+
+app.get('/reserve_one', (req, res) => {
+  res.render('reserve_one.ejs');
+})
+
 app.get('/reserve_two', (req, res) => {
   res.render('reserve_two.ejs');
+})
+
+app.get('/vote', (req, res) => {
+  res.render('vote.ejs');
 })
 
 let port = 3002;
