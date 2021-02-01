@@ -71,18 +71,67 @@
 .reserve-two-seatnum-wrapper p:last-child {
   margin-left: auto;
 }
-.reserve-two-line1-wrapper {
+.reserve-two-line-wrapper:first-child {
+  margin: 5px auto 0;
+}
+.reserve-two-line-wrapper {
+  align-items: center;
   display: flex;
   justify-content: space-around;
-  margin: 5px auto 0;
-  width: 235px;
+  margin: 33px auto 0;
+  width: 280px;
 }
-/* .reserve-two-line1-wrapper::before {
-  content: "A";
-} */
-.reserve-two-line1-wrapper div {
+.reserve-two-line-wrapper p:first-child {
+  margin-right: 4px;
+}
+.reserve-two-line-wrapper p:last-child {
+  margin-left: 4px;
+  visibility:  hidden;
+}
+.reserve-two-line-wrapper div {
   background-color: var(--base-gray);
   border-radius: 3px;
+  cursor: pointer;
   height: 32px;
   width: 24px;
+}
+.reserve-two-line-wrapper div span {
+  display: none;
+}
+
+.reserve-two-selected-seats-wrapper {
+  align-items: top;
+  display: flex;
+  margin-top: 32px;
+}
+.reserve-two-selected-seats-wrapper p {
+  margin-right: 20px;
+}
+.reserve-two-selected-seats {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap; 
+}
+.reserve-two-selected-seats li {
+  margin-right: 20px;
+}
+.reserve-two-now-step {
+  font-family: 'Lato-Thin';
+  margin-top: 80px;
+  text-align: center;
+}
+.reserve-two-btn-next {
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  color: var(--base-black);
+  height: 40px;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+/* js */
+.reserve-two-selected-circle {
+  color: var(--base-yellow);
+  margin-right: 5px;
 }

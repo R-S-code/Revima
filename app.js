@@ -183,13 +183,14 @@ app.get('/mypage', (req, res) => {
   res.render('mypage.ejs');
 })
 
+app.get('/change_info', (req, res) => {
+  res.render('change_info.ejs');
+})
+
 app.get('/payment_info', (req, res) => {
   res.render('payment_info.ejs');
 })
 
-app.get('/change_info', (req, res) => {
-  res.render('change_info.ejs');
-})
 
 app.get('/reserve_one', (req, res) => {
   res.render('reserve_one.ejs');

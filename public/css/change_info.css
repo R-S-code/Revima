@@ -3,7 +3,8 @@
 .change-info-whole-wrapper {
   padding: 35px 20px 55px;
 }
-.change-info-username {
+
+.change-info-username-title {
   font-family: 'Lato-Bold';
 }
 .change-info-input-username {
@@ -13,15 +14,24 @@
   margin-top: 3px;
   width: 100%;
 }
-.change-info-profile {
+.change-info-profilepic-title {
   font-family: 'Lato-Bold';
   margin-top: 20px;
 }
-.chage-info-profilepic-wrapper {
+.change-info-profilepic-wrapper {
+  align-items: center;
+  display: flex;
   margin-top: 30px;
 }
-.chage-info-profilepic-wrapper img {
+.change-info-profilepic-wrapper img {
+  display: block;
+}
+.change-info-profilepic {
   width: 80px;
+}
+.change-info-btn-add {
+  margin-left: 60px;
+  width: 88px;
 }
 .chage-info-mypage-btn {
   background-color: var(--base-yellow);

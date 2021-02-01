@@ -12,12 +12,15 @@
 <%- include("./set/header"); %>
 
 <main class="change-info-whole-wrapper">
-  <p class="change-info-username">ユーザー名</p>
+
+  <p class="change-info-username-title">ユーザー名</p>
   <input type="text" class="change-info-input-username">
-  <p class="change-info-profile">プロフィール画像</p>
-  <div class="chage-info-profilepic-wrapper">
-    <img src="/usericon/usericon1.png">
+
+  <p class="change-info-profilepic-title">プロフィール画像</p>
+  <div class="change-info-profilepic-wrapper">
+    <img src="/usericon/usericon1.png" class="change-info-profilepic">
+    <img src="/images/btn_add.png" class="change-info-btn-add">
   </div>
 
-  <button class="chage-info-mypage-btn">マイページに戻る</button>
+  <a href="/mypage"><button class="chage-info-mypage-btn">マイページに戻る</button></a>
 </main>

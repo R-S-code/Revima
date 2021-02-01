@@ -12,6 +12,8 @@
   <%- include("./set/header"); %>
 
   <main class="reserve-two-whole-wrapper">
+
+    <!-- 選択情報 -->
     <div class="reserve-two-movieinfo-wrapper">
       <div class="reserve-two-movieinfo-one-wrapper">
         <p>作品</p>
@@ -23,6 +25,7 @@
       </div>   
     </div>
 
+    <!-- シート色説明 -->
     <div class="reserve-two-seatstate-wrapper">
       <div class="reserve-two-seatstate-container">
         <div class="reserve-two-blueseat"></div>
@@ -40,6 +43,7 @@
       </div>
     </div>
 
+    <!-- シート選択 -->
     <div class="reserve-two-selectseat-wrapper">
       <div class="reserve-two-screenline">
         <img src="/images/screen_line.png">
@@ -51,54 +55,80 @@
       </div>
 
       <div class="reserve-two-seats-wrapper">
-        <p style="position: abosolute;">A</p>
-        <div class="reserve-two-line1-wrapper">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+        <div class="reserve-two-line-wrapper">
+          <p>A</p>
+          <div name="A-1" id="1"><span>A-1</span></div>
+          <div name="A-2" id="2"><span>A-2</span></div>
+          <div name="A-3" id="3"><span>A-3</span></div>
+          <div name="A-4" id="4"><span>A-4</span></div>
+          <div name="A-5" id="5"><span>A-5</span></div>
+          <div name="A-6" id="6"><span>A-6</span></div>
+          <div name="A-7" id="7"><span>A-7</span></div>
+          <div name="A-8" id="8"><span>A-8</span></div>
+          <p>A</p>
         </div>
 
-        <div class="reserve-two-line1-wrapper">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+        <div class="reserve-two-line-wrapper">
+          <p>B</p>
+          <div name="B-1" id="9"><span>B-1</span></div>
+          <div name="B-2" id="10"><span>B-2</span></div>
+          <div name="B-3" id="11"><span>B-3</span></div>
+          <div name="B-4" id="12"><span>B-4</span></div>
+          <div name="B-5" id="13"><span>B-5</span></div>
+          <div name="B-6" id="14"><span>B-6</span></div>
+          <div name="B-7" id="15"><span>B-7</span></div>
+          <div name="B-8" id="16"><span>B-8</span></div>
+          <p>B</p>
         </div>
 
-        <div class="reserve-two-line1-wrapper">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+        <div class="reserve-two-line-wrapper">
+          <p>C</p>
+          <div name="C-1" id="17"><span>C-1</span></div>
+          <div name="C-2" id="18"><span>C-2</span></div>
+          <div name="C-3" id="19"><span>C-3</span></div>
+          <div name="C-4" id="20"><span>C-4</span></div>
+          <div name="C-5" id="21"><span>C-5</span></div>
+          <div name="C-6" id="22"><span>C-6</span></div>
+          <div name="C-7" id="23"><span>C-7</span></div>
+          <div name="C-8" id="24"><span>C-8</span></div>
+          <p>C</p>
         </div>
 
-        <div class="reserve-two-line1-wrapper">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+        <div class="reserve-two-line-wrapper">
+          <p>D</p>
+          <div name="D-1" id="25"><span>D-1</span></div>
+          <div name="D-2" id="26"><span>D-2</span></div>
+          <div name="D-3" id="27"><span>D-3</span></div>
+          <div name="D-4" id="28"><span>D-4</span></div>
+          <div name="D-5" id="29"><span>D-5</span></div>
+          <div name="D-6" id="30"><span>D-6</span></div>
+          <div name="D-7" id="31"><span>D-7</span></div>
+          <div name="D-8" id="32"><span>D-8</span></div>
+          <p>D</p>
         </div>
+        
       </div>
     </div>
 
-    <p class="reserve-two-selectseat-wrapper">支払いに進む</p>
+    <div class="reserve-two-selected-seats-wrapper">
+      <p>選択中</p>
+      <ul class="reserve-two-selected-seats" id="selected_seats"></ul>
+    </div>
+
+    <p class="reserve-two-now-step">2/3</p>
+    <button class="reserve-two-btn-next">支払いに進む</button>
   </main>
+<script>
+const seats = document.querySelectorAll(".reserve-two-line-wrapper div");
+const selected_seats = document.getElementById("selected_seats");
+
+seats.forEach((seat)=> {
+  seat.addEventListener("click", ()=> {
+    let selected_seat = document.createElement("li");
+    selected_seat.innerHTML = "<span class='reserve-two-selected-circle'>●</span>" + seat.textContent;
+    selected_seats.appendChild(selected_seat);
+  })
+})
+</script>
 </body>
 </html>

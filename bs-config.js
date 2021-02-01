@@ -113,5 +113,5 @@ module.exports = {
         "**/*.css"
     ],
     "proxy": "http://localhost:3002",
-    "port": 4200,
+    "port": 4400,
 };
