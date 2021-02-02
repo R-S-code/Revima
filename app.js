@@ -209,9 +209,11 @@ app.get('/reserve_two', (req, res) => {
   res.render('reserve_two.ejs');
 })
 app.post('/reserve_two', (req, res) => {
-  const test = req.body.seat;
-  console.log(test);
   res.redirect('/reserve_three'); 
+})
+
+app.get('/reserve_done', (req, res) => {
+  res.render('reserve_done.ejs'); 
 })
 
 app.get('/vote', (req, res) => {
