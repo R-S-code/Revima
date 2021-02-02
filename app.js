@@ -8,6 +8,7 @@ app.set("view engine", "ejs");
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 
+/*
 const arr = require('./.db_sec_info.js');
 const connection = mysql.createConnection({
   host: arr.host,
@@ -15,7 +16,6 @@ const connection = mysql.createConnection({
   password: arr.dbpassword,
   database: arr.db,
 });
-
 app.use(
   session({
     secret: 'my_secret_key',
