@@ -38,7 +38,11 @@ app.use((req, res, next) => {
 
 
 app.get('/', (req, res) => {
-  res.render('top.ejs');
+  if(res.locals.isLoggedIn === false) {
+    res.render('nologin_home.ejs');
+  } else {
+    res.render('home.ejs');
+  }
 })
 
 app.get('/login', (req, res) => {
@@ -78,7 +82,7 @@ app.post('/login',
             req.session.userId = results[0].userid;
             req.session.username = results[0].name;
             console.log(results);
-            res.redirect("/home");
+            res.redirect("/");
           } else {
             console.log('認証に失敗しました');
             errors.push('パスワードが違います');
@@ -171,12 +175,16 @@ app.get('/regist_done', (req, res) => {
   res.render('regist_done.ejs');
 })
 
-app.get('/home', (req, res) => {
-  res.render('home.ejs');
-})
-
-app.get('/introduce_movie', (req, res) => {
-  res.render('introduce_movie.ejs');
+app.get('/introduce_movie/:id', (req, res) => {
+  movieid = req.params.id;
+  connection.query(
+    'SELECT * FROM movies WHERE movieid = ?',
+    [movieid],
+    (errror, result) => {
+      console.log(result);
+      res.render('introduce_movie.ejs', {movieinfo: result});
+    }
+  )
 })
 
 app.get('/mypage', (req, res) => {
@@ -184,6 +192,7 @@ app.get('/mypage', (req, res) => {
 })
 
 app.get('/change_info', (req, res) => {
+
   res.render('change_info.ejs');
 })
 
@@ -199,9 +208,19 @@ app.get('/reserve_one', (req, res) => {
 app.get('/reserve_two', (req, res) => {
   res.render('reserve_two.ejs');
 })
+app.post('/reserve_two', (req, res) => {
+  const test = req.body.seat;
+  console.log(test);
+  res.redirect('/reserve_three'); 
+})
 
 app.get('/vote', (req, res) => {
   res.render('vote.ejs');
+})
+app.post('/vote', (req, res) => {
+  const aaaa = req.body.movie;
+  console.log(aaaa);
+  res.redirect('/vote'); 
 })
 
 let port = 3002;

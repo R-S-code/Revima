@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>座席指指定</title>
+  <title>投票</title>
   <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
   <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
   <link rel="stylesheet" type="text/css" href="/css/vote.css" />
@@ -12,108 +12,109 @@
   <%- include("./set/header"); %>
   <main class="vote-whole-wrapper">
     <p class="vote-title">見たいと思う映画を<span>3つまで</span>選んでください</p>
+    <p class="vote-sup-expra">※ 画像をクリックすると紹介ページに飛びます</p>
 
     <form method="post" action="/vote" class="vote-select-movie-wrapper">
 
       <div class="vote-select-movie-container">
         <div>
-          <img src="/movies/Aladdin.png">
+          <img src="/movies/mov1.png">
           <input type="checkbox" name="movie" value="1">
         </div>
   
         <div>
-          <img src="/movies/TheLastSamurai.png">
+          <img src="/movies/mov2.png">
           <input type="checkbox" name="movie" value="2">
         </div>
   
         <div>
-          <img src="/movies/KimiNoNaha.png">
+          <img src="/movies/mov3.png">
           <input type="checkbox" name="movie" value="3">
         </div>
 
         <div>
-          <img src="/movies/AnaYuki.png">
+          <img src="/movies/mov4.png">
           <input type="checkbox" name="movie" value="4">
         </div>
 
         <div>
-          <img src="/movies/Spiderman.png">
+          <img src="/movies/mov5.png">
           <input type="checkbox" name="movie" value="5">
         </div>
 
         <div>
-          <img src="/movies/Ponyo.png">
+          <img src="/movies/mov6.png">
           <input type="checkbox" name="movie" value="6">
         </div>
 
         <div>
-          <img src="/movies/Totoro.png">
+          <img src="/movies/mov7.png">
           <input type="checkbox" name="movie" value="7">
         </div>
 
         <div>
-          <img src="/movies/Nimo.png">
+          <img src="/movies/mov8.png">
           <input type="checkbox" name="movie" value="8">
         </div>
 
         <div>
-          <img src="/movies/TerminaterNewFate.png">
+          <img src="/movies/mov9.png">
           <input type="checkbox" name="movie" value="9">
         </div>
 
         <div>
-          <img src="/movies/Jaws.png">
+          <img src="/movies/mov10.png">
           <input type="checkbox" name="movie" value="10">
         </div>
 
         <div>
-          <img src="/movies/BohemianRhapsody.png">
+          <img src="/movies/mov11.png">
           <input type="checkbox" name="movie" value="11">
         </div>
 
         <div>
-          <img src="/movies/Avatar.png">
+          <img src="/movies/mov12.png">
           <input type="checkbox" name="movie" value="12">
         </div>
 
         <div>
-          <img src="/movies/BijoToYaju.png">
+          <img src="/movies/mov13.png">
           <input type="checkbox" name="movie" value="13">
         </div>
 
         <div>
-          <img src="/movies/SenToChihiro.png">
+          <img src="/movies/mov14.png">
           <input type="checkbox" name="movie" value="14">
         </div>
 
         <div>
-          <img src="/movies/GhostBasters.png">
+          <img src="/movies/mov15.png">
           <input type="checkbox" name="movie" value="15">
         </div>
 
         <div>
-          <img src="/movies/Terminater.png">
+          <img src="/movies/mov16.png">
           <input type="checkbox" name="movie" value="16">
         </div>
         
         <div>
-          <img src="/movies/Armageddon.png">
+          <img src="/movies/mov17.png">
           <input type="checkbox" name="movie" value="17">
         </div>
 
         <div>
-          <img src="/movies/kazeTachinu.png">
+          <img src="/movies/mov18.png">
           <input type="checkbox" name="movie" value="18">
         </div>
 
         <div>
-          <img src="/movies/Titanic.png">
+          <img src="/movies/mov19.png">
           <input type="checkbox" name="movie" value="19">
         </div>
 
         <div>
-          <img src="/movies/HarryPotter.png">
-          <input type="checkbox" name="movie" value="19">
+          <img src="/movies/mov20.png">
+          <input type="checkbox" name="movie" value="20">
         </div>
 
       </div>
@@ -123,6 +124,10 @@
       
   </main>
 <script>
-document.getElementsByClassName("")
+document.querySelectorAll('.vote-select-movie-container div').forEach((movie)=> {
+  movie.children[0].addEventListener("click", ()=> {
+    window.location.href = '/introduce_movie/' + movie.children[1].value; 
+  })
+})
 </script>
 </body>

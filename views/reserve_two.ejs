@@ -44,89 +44,107 @@
     </div>
 
     <!-- シート選択 -->
-    <div class="reserve-two-selectseat-wrapper">
-      <div class="reserve-two-screenline">
-        <img src="/images/screen_line.png">
+    <form method="post" action="/reserve_two">
+      <div class="reserve-two-selectseat-wrapper">
+        <div class="reserve-two-screenline">
+          <img src="/images/screen_line.png">
+        </div>
+
+        <div class="reserve-two-seatnum-wrapper">
+          <p>1</p>
+          <p>8</p>
+        </div>
+
+        <div class="reserve-two-seats-wrapper">
+          <div class="reserve-two-line-wrapper">
+            <p>A</p>
+            <input type="checkbox" name="seat" value="1, A-1">
+            <input type="checkbox" name="seat" value="2, A-2">
+            <input type="checkbox" name="seat" value="3, A-3">
+            <input type="checkbox" name="seat" value="4, A-4">
+            <input type="checkbox" name="seat" value="5, A-5">
+            <input type="checkbox" name="seat" value="6, A-6">
+            <input type="checkbox" name="seat" value="7, A-7">
+            <input type="checkbox" name="seat" value="8, A-8">
+            <p>A</p>
+          </div>
+
+          <div class="reserve-two-line-wrapper">
+            <p>B</p>
+            <input type="checkbox" name="seat" value="9, B-1">
+            <input type="checkbox" name="seat" value="10, B-2">
+            <input type="checkbox" name="seat" value="11, B-3">
+            <input type="checkbox" name="seat" value="12, B-4">
+            <input type="checkbox" name="seat" value="13, B-5">
+            <input type="checkbox" name="seat" value="14, B-6">
+            <input type="checkbox" name="seat" value="15, B-7">
+            <input type="checkbox" name="seat" value="16, B-8">
+            <p>B</p>
+          </div>
+
+          <div class="reserve-two-line-wrapper">
+            <p>C</p>
+            <input type="checkbox" name="seat" value="17, C-1">
+            <input type="checkbox" name="seat" value="18, C-2">
+            <input type="checkbox" name="seat" value="19, C-3">
+            <input type="checkbox" name="seat" value="20, C-4">
+            <input type="checkbox" name="seat" value="21, C-5">
+            <input type="checkbox" name="seat" value="22, C-6">
+            <input type="checkbox" name="seat" value="23, C-7">
+            <input type="checkbox" name="seat" value="24, C-8">
+            <p>C</p>
+          </div>
+
+          <div class="reserve-two-line-wrapper">
+            <p>D</p>
+            <input type="checkbox" name="seat" value="25, D-1">
+            <input type="checkbox" name="seat" value="26, D-2">
+            <input type="checkbox" name="seat" value="27, D-3">
+            <input type="checkbox" name="seat" value="28, D-4">
+            <input type="checkbox" name="seat" value="29, D-5">
+            <input type="checkbox" name="seat" value="30, D-6">
+            <input type="checkbox" name="seat" value="31, D-7">
+            <input type="checkbox" name="seat" value="32, D-8">
+            <p>D</p>
+          </div>
+        </div>
       </div>
 
-      <div class="reserve-two-seatnum-wrapper">
-        <p>1</p>
-        <p>8</p>
+      <div class="reserve-two-selected-seats-wrapper">
+        <p>選択中(最大4席)</p>
+        <ul class="reserve-two-selected-seats" id="selected_seats"></ul>
       </div>
 
-      <div class="reserve-two-seats-wrapper">
-        <div class="reserve-two-line-wrapper">
-          <p>A</p>
-          <div name="A-1" id="1"><span>A-1</span></div>
-          <div name="A-2" id="2"><span>A-2</span></div>
-          <div name="A-3" id="3"><span>A-3</span></div>
-          <div name="A-4" id="4"><span>A-4</span></div>
-          <div name="A-5" id="5"><span>A-5</span></div>
-          <div name="A-6" id="6"><span>A-6</span></div>
-          <div name="A-7" id="7"><span>A-7</span></div>
-          <div name="A-8" id="8"><span>A-8</span></div>
-          <p>A</p>
-        </div>
-
-        <div class="reserve-two-line-wrapper">
-          <p>B</p>
-          <div name="B-1" id="9"><span>B-1</span></div>
-          <div name="B-2" id="10"><span>B-2</span></div>
-          <div name="B-3" id="11"><span>B-3</span></div>
-          <div name="B-4" id="12"><span>B-4</span></div>
-          <div name="B-5" id="13"><span>B-5</span></div>
-          <div name="B-6" id="14"><span>B-6</span></div>
-          <div name="B-7" id="15"><span>B-7</span></div>
-          <div name="B-8" id="16"><span>B-8</span></div>
-          <p>B</p>
-        </div>
-
-        <div class="reserve-two-line-wrapper">
-          <p>C</p>
-          <div name="C-1" id="17"><span>C-1</span></div>
-          <div name="C-2" id="18"><span>C-2</span></div>
-          <div name="C-3" id="19"><span>C-3</span></div>
-          <div name="C-4" id="20"><span>C-4</span></div>
-          <div name="C-5" id="21"><span>C-5</span></div>
-          <div name="C-6" id="22"><span>C-6</span></div>
-          <div name="C-7" id="23"><span>C-7</span></div>
-          <div name="C-8" id="24"><span>C-8</span></div>
-          <p>C</p>
-        </div>
-
-        <div class="reserve-two-line-wrapper">
-          <p>D</p>
-          <div name="D-1" id="25"><span>D-1</span></div>
-          <div name="D-2" id="26"><span>D-2</span></div>
-          <div name="D-3" id="27"><span>D-3</span></div>
-          <div name="D-4" id="28"><span>D-4</span></div>
-          <div name="D-5" id="29"><span>D-5</span></div>
-          <div name="D-6" id="30"><span>D-6</span></div>
-          <div name="D-7" id="31"><span>D-7</span></div>
-          <div name="D-8" id="32"><span>D-8</span></div>
-          <p>D</p>
-        </div>
-        
-      </div>
-    </div>
-
-    <div class="reserve-two-selected-seats-wrapper">
-      <p>選択中</p>
-      <ul class="reserve-two-selected-seats" id="selected_seats"></ul>
-    </div>
-
-    <p class="reserve-two-now-step">2/3</p>
-    <button class="reserve-two-btn-next">支払いに進む</button>
+      <p class="reserve-two-now-step">2/3</p>
+      <input type="submit" class="reserve-two-btn-next" value="投票する">
+    </form>
   </main>
 <script>
-const seats = document.querySelectorAll(".reserve-two-line-wrapper div");
+const seats = document.querySelectorAll(".reserve-two-line-wrapper input");
 const selected_seats = document.getElementById("selected_seats");
 
+let selected_seats_counter = 0;
+
+// シートクリック時の処理
 seats.forEach((seat)=> {
-  seat.addEventListener("click", ()=> {
-    let selected_seat = document.createElement("li");
-    selected_seat.innerHTML = "<span class='reserve-two-selected-circle'>●</span>" + seat.textContent;
-    selected_seats.appendChild(selected_seat);
+  seat.addEventListener("click", (e)=> {
+    let seat_id =  seat.value.split(',')[0];
+    let seat_name = seat.value.split(',')[1]
+    
+    if(seat.checked === true) {
+      if(selected_seats_counter < 4) {
+        selected_seats_counter++;
+        let selected_seat = document.createElement("li");
+        selected_seat.id = seat_id
+        selected_seat.innerHTML = "<span class='reserve-two-selected-circle'>●</span>" + seat_name;
+        selected_seats.appendChild(selected_seat);
+      } else {
+        e.preventDefault();
+      }
+    } else {
+      selected_seats_counter--;
+      document.getElementById(seat_id).remove();
+    }
   })
 })
 </script>

@@ -29,6 +29,7 @@
 .reserve-two-seatstate-container p {
   margin-left: 5px;
 }
+
 .reserve-two-seatstate-container:first-child {
   margin-left: 0;
 }
@@ -50,6 +51,7 @@
   height: 32px;
   width: 24px;
 }
+
 .reserve-two-selectseat-wrapper {
   border: 1px solid #EFEFEF; 
   height: 390px;
@@ -88,15 +90,27 @@
   margin-left: 4px;
   visibility:  hidden;
 }
-.reserve-two-line-wrapper div {
-  background-color: var(--base-gray);
+.reserve-two-line-wrapper input {
+  appearance: none;
+  display: block;
+}
+.reserve-two-line-wrapper input:before {
+  background-color: var(--base-blue);
   border-radius: 3px;
+  content: '';
   cursor: pointer;
+  display: block;
   height: 32px;
   width: 24px;
 }
-.reserve-two-line-wrapper div span {
-  display: none;
+.reserve-two-line-wrapper input:checked:before {
+  background-color: var(--base-yellow);
+  border-radius: 3px;
+  content: '';
+  cursor: pointer;
+  display: block;
+  height: 32px;
+  width: 24px;
 }
 
 .reserve-two-selected-seats-wrapper {
