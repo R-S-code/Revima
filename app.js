@@ -8,13 +8,13 @@ app.set("view engine", "ejs");
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 
-const arr = require('./.db_sec_info.js');
-const connection = mysql.createConnection({
- host: arr.host,
-  user: arr.dbuser,
-  password: arr.dbpassword,
-  database: arr.db,
-});
+//const arr = require('./.db_sec_info.js');
+//const connection = mysql.createConnection({
+ //host: arr.host,
+  //user: arr.dbuser,
+  //password: arr.dbpassword,
+  //database: arr.db,
+//});
 
 app.use(
   session({
@@ -169,6 +169,10 @@ app.get('/payment_info', (req, res) => {
 
 app.get('/reserve_two', (req, res) => {
   res.render('reserve_two.ejs');
+})
+
+app.get('/result', (req, res) => {
+  res.render('result.ejs');
 })
 
 let port = 3002;
