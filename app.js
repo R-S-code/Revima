@@ -16,6 +16,7 @@ const connection = mysql.createConnection({
   password: arr.dbpassword,
   database: arr.db,
 });
+*/
 app.use(
   session({
     secret: 'my_secret_key',
