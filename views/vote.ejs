@@ -13,6 +13,7 @@
   <main class="vote-whole-wrapper">
     <p class="vote-title">見たいと思う映画を<span>3つまで</span>選んでください</p>
     <p class="vote-sup-expra">※ 画像をクリックすると紹介ページに飛びます</p>
+    <p class="vote-sup-expra">※ 映画は最低でも1つ選んでください</p>
 
     <form method="post" action="/vote" class="vote-select-movie-wrapper">
 
@@ -119,15 +120,35 @@
 
       </div>
       
-      <input type="submit" value="投票する">
+      <input type="submit" value="投票する" id="vote_btn">
     </form>
       
   </main>
 <script>
+//画像にハイパーリンク処理 
 document.querySelectorAll('.vote-select-movie-container div').forEach((movie)=> {
   movie.children[0].addEventListener("click", ()=> {
     window.location.href = '/introduce_movie/' + movie.children[1].value; 
   })
 })
+
+// チェックされている数の確認
+const vote_btn = document.getElementById("vote_btn");
+const movie = document.getElementsByName("movie");
+
+vote_btn.addEventListener("click", (e)=>{
+  let checked_counter = 0;
+
+  for (let i = 0; i < movie.length; i++){
+    if(movie[i].checked) {
+      checked_counter++;
+    }
+  }
+
+  if(checked_counter == 0) {
+    e.preventDefault();
+  }
+})
+
 </script>
 </body>
