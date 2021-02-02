@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 
 app.set("view engine", "ejs");
 app.use(express.static('public'));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 
 const arr = require('./.db_sec_info.js');
 const connection = mysql.createConnection({
@@ -16,7 +16,6 @@ const connection = mysql.createConnection({
   database: arr.db,
 });
 
-
 app.use(
   session({
     secret: 'my_secret_key',
@@ -25,19 +24,6 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  if (req.session.userId === undefined) {
-    console.log('ログインしていません');
-    res.locals.isLoggedIn = false;
-  } else {
-    console.log('ログインしています');
-    res.locals.username = req.session.username;
-    res.locals.isLoggedIn = true;
-  }
-  next();
-});
-
-
 app.get('/', (req, res) => {
   res.render('top.ejs');
 })
@@ -45,7 +31,7 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
   res.render('login.ejs', { errors: [] });
 })
-app.post('/login',
+app.post('/login', 
   (req, res, next) => {
     console.log('入力値チェック');
     const username = req.body.login_username;
@@ -88,40 +74,15 @@ app.post('/login',
       } else {
         errors.push('ユーザーが存在しません');
         res.render('login.ejs', {errors: errors});
-    const username = req.body.login_username;
-    const errors = [];
-    connection.query(
-      'SELECT * FROM users WHERE name = ?',
-      [username],
-      (error, results) => {
-        if (results.length > 0) {
-          const plain_password = req.body.login_password;
-          const hash_password = results[0].password;
-          bcrypt.compare(plain_password, hash_password, (error, isEqual) => {
-            if (isEqual) {
-              console.log('認証に成功しました');
-              req.session.userId = results[0].userid;
-              req.session.username = results[0].name;
-              console.log(results);
-              res.redirect("/home");
-            } else {
-              console.log('認証に失敗しました');
-              errors.push('パスワードが違います');
-              res.render('login.ejs', { errors: errors });
-            }
-          });
-        } else {
-          errors.push('ユーザーが存在しません');
-          res.render('login.ejs', { errors: errors });
-        }
       }
-    )
-    }});
+    }
+  )
+});
 
 app.get('/regist', (req, res) => {
-  res.render('regist.ejs', { errors: [] });
+  res.render('regist.ejs', {errors: []});
 })
-app.post('/regist',
+app.post('/regist', 
   (req, res, next) => {
     const username = req.body.regist_username;
     const password = req.body.regist_password;
@@ -155,8 +116,8 @@ app.post('/regist',
       [username],
       (error, results) => {
         if (results.length > 0) {
-          errors.push('そのユーザー名は既に存在しています');
-          res.render('regist.ejs', { errors: errors });
+          errors.push('そのユーザー名は既に存在しています');  
+          res.render('regist.ejs', { errors: errors }); 
         } else {
           next();
         }
@@ -172,13 +133,13 @@ app.post('/regist',
         'insert into users (name, password) values (?, ?)',
         [username, hash],
         (error, results) => {
-          if (error) {
+          if(error) {
             errors.push('エラーが発生しました');
-            res.render('regist.ejs', { errors: errors });
+            res.render('regist.ejs', { errors: errors }); 
           } else {
             req.session.userId = results.insertId;
             req.session.username = username;
-            res.redirect('/regist_done');
+            res.redirect('/regist_done'); 
           }
         }
       );
@@ -197,44 +158,3 @@ app.get('/home', (req, res) => {
 let port = 3002;
 console.log(`running ${port}`);
 app.listen(port);
-app.get('/introduce_movie', (req, res) => {
-  res.render('introduce_movie.ejs');
-})
-
-app.get('/mypage', (req, res) => {
-  res.render('mypage.ejs');
-})
-
-app.get('/change_info', (req, res) => {
-  res.render('change_info.ejs');
-})
-
-app.post('/change_info', (req, res) => {
-  const sql = "UPDATE users SET name = ? WHERE name = ?"
-  var change_username = req.body.change_username;
-  connection.query(sql, [change_username, req.session.username],
-    function (err, result) {
-      console.log(result);
-      //res.send('更新完了しました');
-    })})
-
-  app.get('/payment_info', (req, res) => {
-    res.render('payment_info.ejs');
-  })
-
-
-  app.get('/reserve_one', (req, res) => {
-    res.render('reserve_one.ejs');
-  })
-
-  app.get('/reserve_two', (req, res) => {
-    res.render('reserve_two.ejs');
-  })
-
-  app.get('/vote', (req, res) => {
-    res.render('vote.ejs');
-  })
-
-  let port = 3002;
-  console.log(`running ${port}`);
-  app.listen(port)});
