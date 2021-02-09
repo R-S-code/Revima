@@ -210,6 +210,15 @@ app.post('/change_info', (req, res) => {
   )
 })
 
+app.post('/change_info', (req, res) => {
+  const sql = "UPDATE users SET name = ? WHERE name = ?"
+  var change_username = req.body.change_username;
+  connection.query(sql, [change_username, req.session.username],
+    function (err, result) {
+      console.log(result);
+      //res.send('更新完了しました');
+    })})
+
 app.get('/payment_info', (req, res) => {
   res.render('payment_info.ejs');
 })
