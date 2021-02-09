@@ -1,7 +1,16 @@
 @import url("/css/set/var.css");
 
 .change-info-whole-wrapper {
-  padding: 35px 20px 55px;
+  padding: 35px 20px 24px;
+}
+
+.change-info-message-wrapper p {
+  background-color: var(--base-blue);
+  border-radius: 5px;
+  color: var(--base-white);
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 12px 16px 0;
 }
 
 .change-info-username-title {
@@ -34,7 +43,7 @@
   margin-left: 60px;
   width: 88px;
 }
-.chage-info-mypage-btn {
+.chage-info-change-btn {
   background-color: var(--base-yellow);
   border-radius: 5px;
   color: var(--base-black);
@@ -42,4 +51,9 @@
   margin-top: 465px;
   text-align: center;
   width: 100%;
+}
+.change-info-mypage-btn {
+  font-size: 12px;
+  margin-top: 18px;
+  text-align: center;
 }

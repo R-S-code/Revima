@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>支払い情報登録</title>
+  <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
+  <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/payment_info_add.css" />
+</head>
+<body>
+  <%- include("./set/header"); %>
+  <main class="payment-info-add-whole-wrapper">
+    <form>
+      <h1 class="payment-info-add-credit-title">クレジットカード番号</h1>
+      <div class="payment-info-inputnum-wrapper">
+        <input type="tel" maxlength="4">
+        <span>-</span>
+        <input type="tel" maxlength="4">
+        <span>-</span>
+        <input type="tel" maxlength="4">
+        <span>-</span>
+        <input type="tel" maxlength="4">
+      </div>
+
+      <h1 class="payment-info-add-name-title">クレジットカード氏名</h1>
+      <input type="text" class="payment-info-inputname">
+      <input type="submit" value="支払い情報を追加する">
+    </form>
+    
+  </main>
+</body>

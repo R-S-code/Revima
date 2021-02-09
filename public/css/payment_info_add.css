@@ -1,0 +1,43 @@
+.payment-info-add-whole-wrapper {
+  padding: 33px 20px;
+}
+.payment-info-inputnum-wrapper {
+  align-items: center;
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  display: flex;
+  height: 40px;
+  padding: 0 13px;
+  justify-content: left;
+}
+/* クレジットカード番号 */
+.payment-info-add-credit-title {
+  font-weight: 700;
+}
+.payment-info-inputnum-wrapper {
+  margin-top: 7px;
+}
+.payment-info-inputnum-wrapper input {
+  display: block;
+  margin-top: 7px;
+  text-align: center;
+  width: 35px;
+}
+/* 名前 */
+.payment-info-inputnum-wrapper span {
+  display: block;
+  margin: 0 3px;
+}
+.payment-info-add-name-title {
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+input[type='submit'] {
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  color: var(--base-black);
+  height: 40px;
+  text-align: center;
+  width: 100%;
+}

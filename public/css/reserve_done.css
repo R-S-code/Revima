@@ -24,7 +24,7 @@
   display: block;
   width: 100%;
 }
-@media screen and (min-width: 421px){
+@media screen and (min-width: 415px){
   .reserve-done-wrapper img {
     display: block;
     margin: 0 auto;

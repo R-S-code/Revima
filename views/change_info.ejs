@@ -12,15 +12,22 @@
 <%- include("./set/header"); %>
 
 <main class="change-info-whole-wrapper">
-
-  <p class="change-info-username-title">ユーザー名</p>
-  <input type="text" class="change-info-input-username" value="<%= locals.username %>">
-
-  <p class="change-info-profilepic-title">プロフィール画像</p>
-  <div class="change-info-profilepic-wrapper">
-    <img src="/usericon/usericon1.png" class="change-info-profilepic">
-    <img src="/images/btn_add.png" class="change-info-btn-add">
+  <div class="change-info-message-wrapper">
+    <% if(result_message.length > 0) { %>
+      <p><%= result_message %></p>
+    <% } %>
   </div>
+  <form method="post" action="/change_info">
+    <p class="change-info-username-title">ユーザー名</p>
+    <input type="text" class="change-info-input-username" value="<%= locals.username %>" name="change_username">
 
-  <a href="/mypage"><button class="chage-info-mypage-btn">マイページに戻る</button></a>
+    <p class="change-info-profilepic-title">プロフィール画像</p>
+    <div class="change-info-profilepic-wrapper">
+      <img src="/usericon/usericon1.png" class="change-info-profilepic">
+      <img src="/images/btn_add.png" class="change-info-btn-add">
+    </div>
+
+    <input type="submit" class="chage-info-change-btn" value="変更する"></input>
+  </form>
+  <p class="change-info-mypage-btn"><a href="/mypage">マイページに戻る</a></p>
 </main>
