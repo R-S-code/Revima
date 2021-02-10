@@ -251,7 +251,7 @@ app.get('/reserve_two', (req, res) => {
   res.render('reserve_two.ejs');
 })
 app.post('/reserve_three', (req, res) => {
-  res.redirect('/reserve_three'); 
+  res.render('/reserve_three'); 
 })
 
 app.get('/reserve_done', (req, res) => {
