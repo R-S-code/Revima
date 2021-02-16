@@ -11,16 +11,16 @@
 <body>
   <%- include("./set/header"); %>
   <main class="payment-info-add-whole-wrapper">
-    <form>
+    <form action="/payment_info_add" method="post">
       <h1 class="payment-info-add-credit-title">クレジットカード番号</h1>
       <div class="payment-info-add-inputnum-wrapper">
-        <input type="tel" maxlength="4" placeholder="0000">
+        <input type="tel" maxlength="4" placeholder="0000" name="creditnum">
         <span>-</span>
-        <input type="tel" maxlength="4" placeholder="0000">
+        <input type="tel" maxlength="4" placeholder="0000" name="creditnum">
         <span>-</span>
-        <input type="tel" maxlength="4" placeholder="0000">
+        <input type="tel" maxlength="4" placeholder="0000" name="creditnum">
         <span>-</span>
-        <input type="tel" maxlength="4" placeholder="0000">
+        <input type="tel" maxlength="4" placeholder="0000" name="creditnum">
       </div>
 
       <h1 class="payment-info-add-name-title">クレジットカード氏名</h1>

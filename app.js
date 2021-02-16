@@ -38,7 +38,7 @@ app.use((req, res, next) => {
   next();
 });
 
-
+// トップ
 app.get('/', (req, res) => {
   if(res.locals.isLoggedIn === false) {
     res.render('nologin_home.ejs');
@@ -47,6 +47,7 @@ app.get('/', (req, res) => {
   }
 })
 
+// 登録処理
 app.get('/regist', (req, res) => {
   res.render('regist.ejs', {errors: []});
 })
@@ -105,7 +106,7 @@ app.post('/regist',
             errors.push('エラーが発生しました');
             res.render('regist.ejs', { errors: errors }); 
           } else {
-            req.session.userId = results.insertId;
+            req.session.userid = results.userid;
             req.session.username = username;
             res.redirect('/regist_done'); 
           }
@@ -119,6 +120,7 @@ app.get('/regist_done', (req, res) => {
   res.render('regist_done.ejs');
 })
 
+// ログイン
 app.get('/login', (req, res) => {
   res.render('login.ejs', { errors: [] });
 })
@@ -171,16 +173,17 @@ app.post('/login',
   )
 });
 
+// ログアウト
 app.get('/logout', (req, res) => {
   req.session.destroy((error) => {
     res.redirect('/');
   });
 });
 
+// マイページ処理
 app.get('/mypage', (req, res) => {
   res.render('mypage.ejs');
 })
-
 app.get('/change_info', (req, res) => {
   res.render('change_info.ejs', {result_message: []});
 })
@@ -210,25 +213,93 @@ app.post('/change_info', (req, res) => {
   )
 })
 
+// 支払い情報
 app.get('/payment_info', (req, res) => {
-  res.render('payment_info.ejs');
+  const userid = req.session.userid;
+  connection.query(
+    'SELECT * FROM payment WHERE userid = ?',
+    [userid],
+    (error, results) => {
+      if (error) {
+        console.log("エラー")
+        console.log(error);
+        res.redirect('/mypage');
+      } else {
+        console.log(results);
+        res.render('payment_info.ejs', {creditcards: results});
+      }
+    }
+  );
 })
 
 app.get('/payment_info_add', (req, res) => {
   res.render('payment_info_add.ejs');
+})
+app.post('/payment_info_add', (req, res) => {
+  let yourname = req.body.yourname;
+  let expiration = req.body.expiration;
+  let cvv = req.body.cvv;
+  const creditnums = req.body.creditnum;
+  let your_creditnumber = "";
+  creditnums.forEach((creditnum) => {
+    your_creditnumber += creditnum;
+  });
+
+  connection.query(
+    "INSERT INTO payment (userid, creditnumber, name, expiration, cvv) values (?, ?, ?, ?, ?)",
+    [req.session.userid, your_creditnumber, yourname, expiration, cvv],
+    (error, result) => {
+      if(error) {
+        console.log("クレジットカード追加エラー");
+        console.log(error);
+        res.redirect('/payment_info'); 
+      } else {
+        console.log("クレジットカード追加が成功しました。");
+        console.log(result);
+        res.redirect('/payment_info'); 
+      }
+    }
+  );
 })
 
 app.get('/payment_info_update', (req, res) => {
   res.render('payment_info_update.ejs');
 })
 
+// 投票処理
 app.get('/vote', (req, res) => {
   res.render('vote.ejs');
 })
 app.post('/vote', (req, res) => {
-  const aaaa = req.body.movie;
-  console.log(aaaa);
-  res.redirect('/vote'); 
+  let election_id = null;
+  const selected_movies = req.body.movie;
+  connection.query(
+    'select max(electionid) from elections',
+    (error, result)=> {
+      election_id = JSON.stringify(result[0]["max(electionid)"]);
+      console.log("a" + election_id); 
+      console.log(req.session.userid);
+      connection.query(
+        'INSERT INTO votes (electionid, userid, movieid) values(?, ?, ?)',
+        [election_id, req.session.userid, 1],
+        // [election_id, req.session.userid, 2],
+        (error, result) => {
+          if(error) {
+            console.log("投票エラー");
+            console.log(error);
+          } else {
+            res.redirect('/'); 
+          }
+        })  
+    }
+  )
+
+
+
+  // var insert_values = [];
+  // selected_movies = forEach((selected_movies)=> {
+  //   insert_values += 
+  // })
 })
 
 app.get('/introduce_movie/:id', (req, res) => {
@@ -243,6 +314,7 @@ app.get('/introduce_movie/:id', (req, res) => {
   )
 })
 
+// 予約処理
 app.get('/reserve_one', (req, res) => {
   res.render('reserve_one.ejs');
 })

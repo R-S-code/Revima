@@ -132,13 +132,37 @@ document.querySelectorAll('.vote-select-movie-container div').forEach((movie)=> 
   })
 })
 
-// チェックされている数の確認
-const vote_btn = document.getElementById("vote_btn");
+
 const movie = document.getElementsByName("movie");
+let checked_counter = 0;
+const vote_btn = document.getElementById("vote_btn");
 
+// 3つ以上選べさせない処理
+for (let i = 0; i < movie.length; i++) {
+  movie[i].addEventListener("click", ()=> {
+    if(checked_counter == 3) {
+      if(movie[i].checked == true) {
+        movie[i].checked = false;
+        console.log(checked_counter);
+      } else {
+        movie[i].checked = false;
+        checked_counter--;
+        console.log(checked_counter);
+      }
+    } else {
+      if(movie[i].checked == false) {
+        checked_counter--;
+        console.log(checked_counter);
+      } else {
+        checked_counter++;
+        console.log(checked_counter);
+      }
+    }
+  })
+}
+
+// 最低ひとつ選ばさせる処理
 vote_btn.addEventListener("click", (e)=>{
-  let checked_counter = 0;
-
   for (let i = 0; i < movie.length; i++){
     if(movie[i].checked) {
       checked_counter++;
