@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>result</title>
+  <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
+  <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/result.css" />
+</head>
+<body>
+    <%- include("./set/header"); %>
+    <div class="result-wrapper">
+      <h1 class="result-main-sentence">
+        たくさんの投票ありがとうございました。<br>
+        上映する3つの映画が決まりました！
+      </h1>
+      <div class="result-no1">
+        <div class="result-ranking1"><img src="/images/ranking1.png" alt="一位"></div>
+        
+        <div class="result-no1-movie-img">
+          <img src="/images/movie1.png" alt="一位">
+        </div>
+          <h2>ターミナル</h2>
+          <a>1352票</a>
+        </div>
+       
+      </div>
+      <div class="result-box">
+        <div class="result-no2">
+          <div class="result-ranking2"><img src="/images/ranking2.png" alt="2位"></div>
+          <div class="result-no2-movie-img">
+            <img src="/images/movie2.png" alt="二位">
+          </div>
+          <div class="result-text">
+            <h2>バックトゥザフューチャー</h2>
+            <a>1163票</a>
+          </div>
+          
+        </div>
+        
+        <div class="result-no3">
+          <div class="result-ranking3"><img src="/images/ranking3.png" alt="3位"></div>
+          <div class="result-no3-movie-img">
+            <img src="/images/movie3.png" alt="三位">
+          </div>
+          <div class="result-text">
+            <h2>ファイトクラブ</h2>
+            <a>893票</a>
+          </div>
+          
+        </div>
+      </div>
+
+      <a href="#"><button class="result-reservation">映画を予約する</button></a>
+    </div>
+
+</body>
+</html>

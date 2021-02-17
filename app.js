@@ -349,6 +349,10 @@ app.get('/admin', (req, res) => {
   res.render('admin.ejs'); 
 })
 
+app.get('/result', (req, res) => {
+  res.render('result.ejs');
+})
+
 let port = 3002;
 console.log(`running ${port}`);
 app.listen(port);
