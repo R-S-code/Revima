@@ -44,6 +44,14 @@
     </div>
 
     <!-- シート選択 -->
+
+    <!-- 予約されている席の情報 -->
+    <div class="reserve-two-taken-seats-wrapper">
+      <% reserved_seats.forEach((reserved_seat)=> { %>
+        <p class="reserve-two-taken-seat-info"><%= reserved_seat.seat %></p>
+      <% }) %>
+    </div>
+
     <form method="post" action="/reserve_two">
       <div class="reserve-two-selectseat-wrapper">
         <div class="reserve-two-screenline">
@@ -120,30 +128,49 @@
     </form>
   </main>
 <script>
+// 予約されている席のデータ取り出し処理
+let taken_seats_info = document.querySelectorAll(".reserve-two-taken-seat-info");
+// 予約されているデータの数字を入れる配列
+let taken_seats_box = [];
+taken_seats_info.forEach((taken_seat_info)=> {
+  taken_seats_box.push(taken_seat_info.innerText);
+})
+
+// 全てのシートに処理
 const seats = document.querySelectorAll(".reserve-two-line-wrapper input");
 const selected_seats = document.getElementById("selected_seats");
 
 let selected_seats_counter = 0;
 
-// シートクリック時の処理
 seats.forEach((seat)=> {
+
+  taken_seats_box.forEach((taken_seat)=> {
+    if(seat.value.split(',')[0] == taken_seat) {
+      seat.classList.add("reserve-two-taken-seat");
+    }
+  })
+
+  // シートクリック時の処理
   seat.addEventListener("click", (e)=> {
-    let seat_id =  seat.value.split(',')[0];
-    let seat_name = seat.value.split(',')[1]
-    
-    if(seat.checked === true) {
-      if(selected_seats_counter < 4) {
-        selected_seats_counter++;
-        let selected_seat = document.createElement("li");
-        selected_seat.id = seat_id
-        selected_seat.innerHTML = "<span class='reserve-two-selected-circle'>●</span>" + seat_name;
-        selected_seats.appendChild(selected_seat);
+    if(seat.classList.contains("reserve-two-taken-seat") == false) {
+      let seat_id = seat.value.split(',')[0];
+      let seat_name = seat.value.split(',')[1]
+      
+      if(seat.checked === true) {
+        if(selected_seats_counter < 4) {
+          selected_seats_counter++;
+          let selected_seat = document.createElement("li");
+          selected_seat.id = seat_id
+          selected_seat.innerHTML = "<span class='reserve-two-selected-circle'>●</span>" + seat_name;
+          selected_seats.appendChild(selected_seat);
+        } else {
+          e.preventDefault();
+        }
       } else {
-        e.preventDefault();
+        selected_seats_counter--;
+        // 要素を削除
+        document.getElementById(seat_id).remove();
       }
-    } else {
-      selected_seats_counter--;
-      document.getElementById(seat_id).remove();
     }
   })
 })

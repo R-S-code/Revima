@@ -323,9 +323,23 @@ app.get('/reserve_one', (req, res) => {
   res.render('reserve_one.ejs');
 })
 
-app.get('/reserve_two', (req, res) => {
-  res.render('reserve_two.ejs');
-})
+app.get("/reserve_two/:id", (req, res) => {
+	playid = req.params.id;
+	connection.query(
+		"select seat from reserve where playid = ?",
+		[playid],
+		(error, results) => {
+      if(error) {
+        console.log("座席情報取得エラー");
+        console.log(error);
+      } else {
+        console.log(results);
+        res.render("reserve_two.ejs", { reserved_seats: results });
+      }
+		}
+	);
+});
+
 app.post('/reserve_three', (req, res) => {
   res.render('/reserve_three'); 
 })
