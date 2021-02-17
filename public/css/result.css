@@ -1,84 +1,87 @@
 @import url("/css/set/var.css");
 
 .result-wrapper {
-  padding: 0 20px 30px;
+  padding: 0 20px 195px;
 }
 .result-main-sentence{
-  padding-top: 33px;
   font-size: 14px;
   font-weight: 700;
-}
-.result-no1{
-  text-align: center;
-}
-.result-ranking1 img{
-  text-align: center;
-  width: 36px;
-  position: relative;
-  top: 18px;
-}
-.result-no1-movie-img img{
-  width: 180px;
-  text-align: center;
-}
-.result-no2{
-  text-align: center;
-  padding-right: 50px;
-  padding-left: 80px;
-  word-break: normal;
-}
-.result-ranking2 img{
-  text-align: center;
-  width: 36px;
-  position: relative;
-  top: 18px;
-}
-.result-no2-movie-img img{
-  width: 100px;
-  text-align: center;
-}
-.result-no3{
-  padding-left: 30px;
-  padding-right: 30px;
-  text-align: center;
-}
-.result-ranking3 img{
-  text-align: center;
-  width: 36px;
-  position: relative;
-  top: 18px;
-}
-.result-no3-movie-img img{
-  width: 100px;
-  text-align: center;
-}
-
-.result-no1 h2{
-font-size: 18px;
-font-weight: 700;
-padding-bottom: 4px;
-}
-.result-no1 a{
-  font-size: 14px;
+  line-height: 20px;
+  padding-top: 33px;
 }
 
 .result-text{
-  width: 100px;
   text-align: center;
-  padding-left: 5px;
+  width: 100px;
 }
 .result-text h2{
   font-size: 14px;
   padding-bottom: 4px;
 }
-.result-text a{
-  font-size: 15px;
+.result-text p{
+  margin-top: 5px;
 }
 
-.result-box{
-  display: flex;
-  padding-left: 60px;
+/* 1位 */
+.result-no1{
+  text-align: center;
 }
+.result-no1 h2{
+  font-size: 18px;
+  font-weight: 700;
+  padding-bottom: 4px;
+}
+.result-no1 p {
+  font-size: 14px;
+}
+.result-ranking1 img{ 
+  position: relative;
+  text-align: center;
+  top: 18px;
+  width: 36px;
+}
+.result-no1-movie-img img{
+  text-align: center;
+  width: 180px;
+}
+
+.result-box {
+  display: flex;
+  padding: 0 40px;
+}
+
+/* ２位 */
+.result-no2{
+  text-align: center;
+  word-break: normal;
+}
+.result-ranking2 img{
+  position: relative;
+  text-align: center;
+  top: 18px;
+  width: 36px;
+}
+.result-no2-movie-img img{
+  text-align: center;
+  width: 100px;
+}
+
+/* 3位 */
+.result-no3 {
+  margin-left: auto;
+  text-align: center;
+}
+.result-ranking3 img{
+  position: relative;
+  text-align: center;
+  top: 18px;
+  width: 36px;
+}
+.result-no3-movie-img img{
+  text-align: center;
+  width: 100px;
+}
+
 .result-reservation{
   background-color: var(--base-yellow);
   border-radius: 5px;
@@ -86,8 +89,7 @@ padding-bottom: 4px;
   font-size: 18px;
   font-weight: 700;
   height: 64px;
-  margin: 40px auto 0;
+  margin-top: 40px;
   text-align: center;
-  width: 94%;
-  margin-left: 3%;
+  width: 100%;
 }

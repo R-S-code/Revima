@@ -10,7 +10,7 @@
 </head>
 <body>
     <%- include("./set/header"); %>
-    <div class="result-wrapper">
+    <main class="result-wrapper">
       <h1 class="result-main-sentence">
         たくさんの投票ありがとうございました。<br>
         上映する3つの映画が決まりました！
@@ -22,7 +22,7 @@
           <img src="/images/movie1.png" alt="一位">
         </div>
           <h2>ターミナル</h2>
-          <a>1352票</a>
+          <p>1352票</p>
         </div>
        
       </div>
@@ -34,9 +34,8 @@
           </div>
           <div class="result-text">
             <h2>バックトゥザフューチャー</h2>
-            <a>1163票</a>
+            <p>1163票</p>
           </div>
-          
         </div>
         
         <div class="result-no3">
@@ -46,14 +45,12 @@
           </div>
           <div class="result-text">
             <h2>ファイトクラブ</h2>
-            <a>893票</a>
+            <p>893票</p>
           </div>
-          
         </div>
       </div>
 
-      <a href="#"><button class="result-reservation">映画を予約する</button></a>
-    </div>
-
+      <a href="/reserve_one"><button class="result-reservation">映画を予約する</button></a>
+    </main>
 </body>
 </html>
