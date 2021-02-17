@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
   <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
   <link rel="stylesheet" type="text/css" href="/css/reserve_one.css" />
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
 </head>
 <body>
   <%- include("./set/header"); %>
@@ -31,11 +31,11 @@
     <a href="/reserve_two"><button class="reserve-one-btn-next">座席選択に進む</button></a>
   </main>
 <script>
-  let select_title = document.getElementById('select_title');
-  select_title.addEventListener('change', ()=> {
-    axios.get('https://jsonplaceholder.typicode.com/todos/1')
-  .then(res => console.log(res.data))
-  }
+  // let select_title = document.getElementById('select_title');
+  // select_title.addEventListener('change', ()=> {
+  //   axios.get('https://jsonplaceholder.typicode.com/todos/1')
+  // .then(res => console.log(res.data))
+  // }
  
 </script>
 </body>

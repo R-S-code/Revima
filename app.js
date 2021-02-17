@@ -320,16 +320,6 @@ app.get('/introduce_movie/:id', (req, res) => {
 
 // 予約処理
 app.get('/reserve_one', (req, res) => {
-  connection.query(
-    'SELECT name FROM users WHERE userid = ?',
-    [userid],
-    (error, result) => {
-      let result_message = "ユーザー情報を変更しました";
-      console.log(result);
-      req.session.username =  result[0].name;
-      res.render('change_info.ejs', {result_message: result_message});
-    }
-  )
   res.render('reserve_one.ejs');
 })
 
