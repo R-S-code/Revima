@@ -1,0 +1,36 @@
+@import url("/css/set/var.css");
+
+.reserve-one-whole-wrapper {
+  padding: 33px 20px 55px;
+}
+
+.reserve-one-title-title {
+  font-weight: 700;
+}
+.reserve-one-selected-movie {
+  background-image: url(../images/ico_select_arrow.png);
+  background-repeat: no-repeat;
+  background-size: 18px 8px;
+  background-position: right 15px center;
+
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  cursor: pointer;
+  height: 40px;
+  margin-top: 7px;
+  padding-left: 13px;
+  width: 100%;
+}
+
+.reserve-one-title-dat {
+  font-weight: 700;
+  margin-top: 20px;
+}
+.reserve-one-btn-next {
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  color: var(--base-black);
+  height: 40px;
+  text-align: center;
+  width: 100%;
+}

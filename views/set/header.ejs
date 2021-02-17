@@ -4,8 +4,17 @@
 
 <header class="header-container">
   <div class="header-contents">
-    <a href="/" class="header-logo-top">Revima</a> 
-    <a href="/login" class="header-btn-login">ログイン</a>
-    <a href="/regist"><p class="header-btn-vote">投票する</p></a>
+    <% if (locals.isLoggedIn === false ) { %>
+      <a href="/" class="header-logo-top">Revima</a> 
+    <% } else { %>
+      <a href="/" class="header-logo-top">Revima</a> 
+    <% } %>  
+    
+    <% if (locals.isLoggedIn === false ) { %>
+      <a href="/login" class="header-btn-login">ログイン</a>
+      <a href="/regist"><p class="header-btn-vote">投票する</p></a>
+    <% } else { %>
+      <a href="/mypage" class="header-profile"><img src="/usericon/usericon1.png"></a>
+    <% } %>  
   </div>
 </header>

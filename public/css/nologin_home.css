@@ -1,24 +1,25 @@
 @import url("/css/set/var.css");
 
-.home-contents {
-  padding: 0 20px;
+.top-contents {
+  overflow: hidden;
+  padding: 0 20px 40px;
 }
-.home-catch-copy {
+.top-catch-copy {
   font-size: 36px;
   font-weight: 700;
   line-height: 60px;
   margin-top: 68px;
 }
-.home-txt-eigakan {
+.top-txt-eigakan {
   color: var(--base-yellow);
   font-size: 48px;
 }
-.home-explain-revima {
+.top-explain-revima {
   letter-spacing: 5%;
   line-height: 36px;
   margin-top: 52px;
 }
-.home-vote-eiga {
+.top-vote-eiga {
   background-color: var(--base-yellow);
   border-radius: 5px;
   color: #252525;
@@ -29,16 +30,19 @@
   text-align: center;
   width: 100%;
 }
-.home-demo-box-container {
+.top-moviepic-container {
   display: flex;
-  justify-content: center;
-  overflow: hidden;
-  padding: 50px 0 100px;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-left: -10%;
+  width: 120%;
 }
-.home-demo-box  {
-  flex: none;
-  background-color: var(--base-white);
-  height: 168px;
-  margin-right: 5px;
+.top-moviepic-container img {
   width: 100px;
+}
+.top-footer {
+  font-family: 'Lato-Bold';
+  font-size: 12px;
+  text-align: center;
+  margin-top: 50px;
 }

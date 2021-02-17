@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revima</title>
+  <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
+  <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/nologin_home.css" />
+</head>
+<body>
+  <%- include("./set/header"); %>
+  <div class="top-contents">
+    <main>
+      <h1 class="top-catch-copy">
+        あの名作を<br/>
+        <span class="top-txt-eigakan">映画館</span>
+        でもう一度
+      </h1> 
+      <p class="top-explain-revima">
+        誰もが知っている名作。何度も観た名作。<br/>
+        映画館のスクリーンで観ませんか？<br/>
+        Revimaでは、ユーザー投票によって選ばれた作品が映画館のスクリーンに蘇ります。<br/>
+        あなたのお気に入りの作品を教えてください。
+      </p>
+      <a href="/regist"><button class="top-vote-eiga">見たい映画に投票する</button></a>
+      <div class="top-moviepic-container">
+        <img src="/images/movie1.png">
+        <img src="/images/movie2.png">
+        <img src="/images/movie3.png">
+        <img src="/images/movie4.png">
+        <img src="/images/movie5.png">
+        <img src="/images/movie6.png">
+      </div>
+    </main>
+    <footer class="top-footer">
+      ©Revima
+    </footer>
+  </div>
+</body>
+</html>

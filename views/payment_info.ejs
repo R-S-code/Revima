@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>支払い情報</title>
   <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
   <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
   <link rel="stylesheet" type="text/css" href="/css/payment_info.css" />
@@ -14,11 +14,17 @@
   <main class="payment-info-whole-wrapper">
     <p class="payment-info-title">クレジットカード</p>
     <div class="payment-info-creditcard-wrapper">
-      <p class="payment-info-creditcard-number">0000 - 0000 - 0000</p>
-      <p class="payment-info-edit">編集</p>
-      <p class="payment-info-delete">削除</p>
+      <% creditcards.forEach((creditcard) => { %>
+        <p class="payment-info-creditcard-number">
+          <% let creditnums = creditcard.creditnumber.match(/.{4}/g); %>
+          <%= creditnums[0] %> - <%= creditnums[1] %> -  <%= creditnums[2] %> - <%= creditnums[3] %>
+        </p>
+        <a href="/payment_info_update"><p class="payment-info-edit">編集</p></a>
+        <a href="/payment_info_delete"><p class="payment-info-delete">削除</p></a>
+      <% }) %>
     </div>
-    <p class="payment-info-add-creditcard">+ クレジットカードを追加する</p>
-    <p class="payment-info-goto-mypage">マイページに戻る</p>
+  
+    <a href="payment_info_add"><p class="payment-info-add-creditcard">+ クレジットカードを追加する</p></a>
+    <a href="/mypage"><p class="payment-info-goto-mypage">マイページに戻る</p></a>
   </main>
 </body>

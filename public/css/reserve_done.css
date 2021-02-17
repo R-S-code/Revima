@@ -1,0 +1,48 @@
+@import url("/css/set/var.css");
+
+.reserve-done-wrapper {
+  padding: 160px 0 57px;
+}
+
+/* メッセージ */
+.reserve-done-wrapper h1 {
+  font-family: 'Roboto-Bold';
+  font-size: 24px;
+  text-align: center;
+  padding: 0 20px;
+}
+.reserve-done-wrapper p {
+  font-weight: bold;
+  line-height: 22px;
+  margin-top: 65px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* 画像部分 */
+.reserve-done-wrapper img {
+  display: block;
+  width: 100%;
+}
+@media screen and (min-width: 415px){
+  .reserve-done-wrapper img {
+    display: block;
+    margin: 0 auto;
+    width: 415px;
+  } 
+}
+
+/* ホームに戻るボタン */
+.reserve-done-btn-wrpper  {
+  padding: 0 20px;
+}
+.reserve-done-btn-wrapper button {
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  color: var(--base-black);
+  display: block;
+  height: 40px;
+  margin: 165px auto 0;
+  text-align: center;
+  width: 100%;
+}

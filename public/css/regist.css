@@ -1,7 +1,7 @@
 @import url("/css/set/var.css");
 
 .regist-container {
-  padding: 160px 20px 0;
+  padding: 280px 20px 40px;
 }
 .regist-logo-top {
   font-family: 'Roboto-Bold';
@@ -60,14 +60,30 @@
 }
 .regist-reccomend-login {
   font-size: 14px;
-  padding: 335px 0 40px;
+  padding: 335px 0 0;
   text-align: center;
 }
 .regist-txt-login {
-  color:#669B9E;
+  color: var(--base-blue);
 }
 
 /* エラー時css */
 .regist-errors-wrapper {
-  
+  box-sizing: border-box;
+  margin-top: 20px;
+  max-width: 560px;
+  padding: 0 20px;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+}
+.regist-error {
+  align-items: center;
+  background-color: var(--base-red);
+  border-radius: 5px;
+  display: flex;
+  height: 40px;
+  margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

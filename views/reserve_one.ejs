@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>予約</title>
+  <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
+  <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/reserve_one.css" />
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <%- include("./set/header"); %>
+  <main class="reserve-one-whole-wrapper">
+
+    <h1 class="reserve-one-title-title">タイトル</h1>
+    <select name="movie_title" class="reserve-one-selected-movie" id="select_title">¥
+      <option></option>
+      <option value="terminal1">ターミナル1</option>
+      <option value="terminal2">ターミナル2</option>
+      <option value="terminal4">ターミナル3</option>
+    </select>  
+   
+    <h1 class="reserve-one-title-dat">日時</h1>
+    <select name="movie_title" class="reserve-one-selected-movie">
+      <option value="terminal1">ターミナル1</option>
+      <option value="terminal2">ターミナル2</option>
+      <option value="terminal4">ターミナル3</option>
+    </select>
+
+    <a href="/reserve_two"><button class="reserve-one-btn-next">座席選択に進む</button></a>
+  </main>
+<script>
+  let select_title = document.getElementById('select_title');
+  select_title.addEventListener('change', ()=> {
+    axios.get('https://jsonplaceholder.typicode.com/todos/1')
+  .then(res => console.log(res.data))
+  }
+ 
+</script>
+</body>
+</html>

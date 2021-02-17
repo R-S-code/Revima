@@ -11,15 +11,14 @@
 <body>
   <%- include("./set/header"); %>
   <div class="introduce-movie-whole-wrapper">
-    <h1 class="introduce-movie-title">バックトゥザフューチャー</h1>
-    <div class="introduce-movie-movie-img"><img src="/images/btf.png" alt="バックトゥザフューチャー"></div>
+    <h1 class="introduce-movie-title"><%= movieinfo[0].title %></h1>
+    <div class="introduce-movie-movie-img"><img src="/movies/mov<%= movieinfo[0].movieid %>.png" alt="<%= movieinfo.title %>"></div>
     <div class="introduce-movie-story">
-      <p class="introduce-movie-story-text">
-        1985年のアメリカ映画。SF映画。略して『BTTF』『BTF』とも呼ばれる。『バック・トゥ・ザ・フューチャーシリーズ』の1作目。公開当時全米で『フューチャー現象』と呼ばれるブームが生まれるほど大ヒットした。
-        同年のアカデミー賞では音響効果賞を受賞。続編に『バック・トゥ・ザ・フューチャー PART2』（1989年）、『バック・トゥ・ザ・フューチャー PART3』（1990年）がある。
-      </p>
-      <a href="#"><button class="introduce-movie-vote">投票する</button></a>
+      <p class="introduce-movie-story-text"><%= movieinfo[0].synopsis %></p>
+      <a href="/vote"><button class="introduce-movie-back">投票に戻る</button></a>
     </div>
   </div>
+<script>
+</script>
 </body>
 </html>

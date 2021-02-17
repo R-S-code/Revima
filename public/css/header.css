@@ -1,4 +1,4 @@
-@import url("/css/set/_var.css");
+@import url("/css/set/var.css");
 
 .header-container {
   padding: 55px 20px 13px;
@@ -27,4 +27,7 @@
   font-size: 14px;
   font-weight: bold;
   padding: 8px;
+}
+.header-profile img {
+  width: 32px;
 }

@@ -47,3 +47,24 @@
 .login-txt-regist {
   color:#669B9E;
 }
+
+/* エラー時 */
+.login-errors-wrapper {
+  box-sizing: border-box;
+  margin-top: 20px;
+  max-width: 560px;
+  padding: 0 20px;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+}
+.login-error {
+  align-items: center;
+  background-color: var(--base-red);
+  border-radius: 5px;
+  display: flex;
+  height: 40px;
+  margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}

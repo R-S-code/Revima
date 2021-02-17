@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>マイページ</title>
   <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
   <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
   <link rel="stylesheet" type="text/css" href="/css/mypage.css" />
@@ -17,7 +17,7 @@
         <div class="mypage-user-icon">
           <img src="/usericon/usericon1.png">
         </div>
-        <p class="mypage-user-name">トム</p>
+        <p class="mypage-user-name"><%= locals.username %></p>
       </div>
       <div class="mypage-second-container">
         <p>2020/12/15</p>
@@ -26,16 +26,33 @@
       </div>
     </div>
     <div class="mypage-list-wrapper">
-      <p>ユーザー情報変更</p>
-      <p>支払い情報</p>
-      <p>ログアウト</p>
+      <p><a href="reserve_list">予約一覧</a></p>
+      <p><a href="/change_info">ユーザー情報変更</a></p>
+      <p><a href="/payment_info">支払い情報</a></p>
+      <p id="list_logout">ログアウト</p>
       <p>退会</p>
     </div>
     
-    <div class="mypage-logout-wrapper">
+    <div class="mypage-logout-wrapper" id="popup_logout">
       <h1 class="mypage-logout-title">ログアウトしますか?</h1>
-      <p class="mypage-logout-btn">ログアウト</p>
+      <a href="/logout"><p class="mypage-logout-btn">ログアウト</p></a>
     </div>
   </div>
+<script>
+  let list_logout = document.getElementById("list_logout");
+  let popup_logout = document.getElementById("popup_logout");
+
+  // ログアウトポップアップ表示イベント
+  list_logout.addEventListener("click", ()=> {
+    popup_logout.style.visibility = "visible";
+  })
+
+  document.addEventListener("click", (e)=> {
+    if(!e.target.closest('#popup_logout') && !e.target.closest('#list_logout')) {
+      console.log('a');
+      popup_logout.style.visibility = "hidden";
+    }
+  })
+</script>
 </body>
 </html>

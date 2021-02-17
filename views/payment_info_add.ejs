@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>支払い情報登録</title>
+  <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
+  <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/payment_info_add.css" />
+</head>
+<body>
+  <%- include("./set/header"); %>
+  <main class="payment-info-add-whole-wrapper">
+    <form action="/payment_info_add" method="post">
+      <h1 class="payment-info-add-credit-title">クレジットカード番号</h1>
+      <div class="payment-info-add-inputnum-wrapper">
+        <input type="tel" maxlength="4" placeholder="0000" name="creditnum">
+        <span>-</span>
+        <input type="tel" maxlength="4" placeholder="0000" name="creditnum">
+        <span>-</span>
+        <input type="tel" maxlength="4" placeholder="0000" name="creditnum">
+        <span>-</span>
+        <input type="tel" maxlength="4" placeholder="0000" name="creditnum">
+      </div>
+
+      <h1 class="payment-info-add-name-title">クレジットカード氏名</h1>
+      <input type="text" class="payment-info-add-inputname" placeholder="Revima Revima" name="yourname">
+
+      <div class="payment-info-add-contets-wrapper">
+        <div>
+          <h1>有効期限</h1>
+          <input type="text" maxlength="5" placeholder="22/02" name="expiration">
+        </div>
+
+        <div>
+          <h1>CVV</h1>
+          <input type="tel" maxlength="3" placeholder="000" name="cvv">
+        </div>
+      </div>
+      <input type="submit" value="支払い情報を追加する">
+    </form>
+    
+    <button class="payment-info-add-back-btn"><a href="/payment_info">クレジットカード一覧に戻る</a></button>
+  </main>
+</body>
