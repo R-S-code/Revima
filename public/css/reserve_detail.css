@@ -1,5 +1,9 @@
 @import url("/css/set/var.css");
 
+.reserve-detail-whole-wrapper {
+  font-family: 'Lato';
+  padding-bottom: 10px;
+}
 /* 1 */
 .reserve-detail-first-wrapper {
   box-shadow: 0 10px 0 #252525;
@@ -44,5 +48,37 @@
 
 /* 3 */
 .reserve-detail-third-wrapper {
-  
+  color: var(--base-gray);
+  padding: 20px 20px  0;
+}
+.reserve-detail-third-upper-container {
+  border-bottom: 1px solid ;
+  color: var(--base-gray);
+  display: flex;
+  padding-bottom: 25px;
+}
+.reserve-detail-third-upper-container p:last-child {
+  margin-left: auto;
+}
+
+.reserve-detail-third-container div {
+  display: flex;
+}
+.reserve-detail-third-container div:first-child {
+  font-size: 18px;
+  margin-top: 30px;
+}
+.reserve-detail-third-container div:first-child p:last-child {
+  margin-left: auto;
+}
+.reserve-detail-third-container div:last-child {
+  margin-top: 18px;
+}
+.reserve-detail-third-container div:last-child p:last-child {
+  margin-left: auto;
+}
+.reserve-detail-backbtn {
+  display: block;
+  font-size: 12px;
+  margin: 325px auto 0;
 }
