@@ -9,10 +9,31 @@
   <link rel="stylesheet" type="text/css" href="/css/reserve_list.css" />
 </head>
 
-<main>
-  <div class="reserve-list--wrapper">
-    <div class="reserve-list-container">
+<body>
+  <%- include("./set/header"); %>
+
+  <main>
+    <div class="reserve-list-wrapper">
+      <div class="reserve-list-container">
+        <div class="reserve-list-upper-wrapper">
+          <p>2021/2/7</p>
+          <p><a href="/reserve_detail">予約詳細 ></a></p>
+        </div>
       
+        <h1>ターミナル</h1>
+      </div>
+
+      <div class="reserve-list-container">
+        <div class="reserve-list-upper-wrapper">
+          <p>2021/2/7</p>
+          <p><a href="/reserve_detail">予約詳細 ></a></p>
+        </div>
+      
+        <h1>ターミナル</h1>
+      </div>
+
+      <a href="/mypage"><button class="reserve-list-back-maypage">マイページに戻る</button></a>
     </div>
-  </div>
-</main>
+  </main>
+</body>
+

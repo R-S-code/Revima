@@ -1,1 +1,48 @@
 @import url("/css/set/var.css");
+
+/* 1 */
+.reserve-detail-first-wrapper {
+  box-shadow: 0 10px 0 #252525;
+  padding: 0 20px 60px;
+}
+.reserve-detail-first-wrapper h1 {
+  font-family: 'Lato-Bold';
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 50px;
+}
+.reserve-detail-first-container {
+  color: var(--base-gray);
+  display: flex;
+  margin-top: 20px;
+}
+.reserve-detail-first-container p:last-child {
+  margin-left: 35px;
+}
+
+/* 2 */
+.reserve-detail-second-wrapper {
+  box-shadow: 0 2px 0 #252525;
+  margin-top: 10px;
+  padding: 30px 20px 35px;
+}
+.reserve-detail-second-container {
+  color: var(--base-gray);
+  display: flex;
+  font-family: 'Lato-Bold';
+  font-weight: 700;
+}
+.reserve-detail-second-container p:nth-child(2) {
+  margin-left: auto;
+}
+.reserve-detail-second-container p:nth-child(3) {
+  margin-left: 25px;
+}
+.reserve-detail-seat-wrapper {
+  margin-top: 20px;
+}
+
+/* 3 */
+.reserve-detail-third-wrapper {
+  
+}

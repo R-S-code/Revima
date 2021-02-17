@@ -212,6 +212,12 @@ app.post('/change_info', (req, res) => {
     }
   )
 })
+app.get('/reserve_list', (req, res) => {
+  res.render('reserve_list.ejs');
+})
+app.get('/reserve_detail', (req, res) => {
+  res.render('reserve_detail.ejs');
+})
 
 // 支払い情報
 app.get('/payment_info', (req, res) => {
@@ -271,35 +277,33 @@ app.get('/vote', (req, res) => {
   res.render('vote.ejs');
 })
 app.post('/vote', (req, res) => {
-  let election_id = null;
   const selected_movies = req.body.movie;
   connection.query(
     'select max(electionid) from elections',
-    (error, result)=> {
-      election_id = JSON.stringify(result[0]["max(electionid)"]);
-      console.log("a" + election_id); 
-      console.log(req.session.userid);
+    (error1, result1)=> {
+      let bind_holder = "";
+      let values_holder = [];
+      election_id = JSON.stringify(result1[0]["max(electionid)"]);
+      selected_movies.forEach((selected_movie)=> {
+        bind_holder += "(?, ?, ?),";
+        values_holder.push(election_id, req.session.userid, selected_movie);
+      })
+      bind_holder = bind_holder.slice(0, -1);
+      console.log(values_holder);
       connection.query(
-        'INSERT INTO votes (electionid, userid, movieid) values(?, ?, ?)',
-        [election_id, req.session.userid, 1],
-        // [election_id, req.session.userid, 2],
-        (error, result) => {
-          if(error) {
+        `INSERT INTO votes (electionid, userid, movieid) values ${bind_holder}`,
+        values_holder,
+        (error2, result2) => {
+          if(error2) {
             console.log("投票エラー");
-            console.log(error);
+            console.log(error2);
           } else {
             res.redirect('/'); 
           }
-        })  
+        }
+      )
     }
   )
-
-
-
-  // var insert_values = [];
-  // selected_movies = forEach((selected_movies)=> {
-  //   insert_values += 
-  // })
 })
 
 app.get('/introduce_movie/:id', (req, res) => {
@@ -316,6 +320,16 @@ app.get('/introduce_movie/:id', (req, res) => {
 
 // 予約処理
 app.get('/reserve_one', (req, res) => {
+  connection.query(
+    'SELECT name FROM users WHERE userid = ?',
+    [userid],
+    (error, result) => {
+      let result_message = "ユーザー情報を変更しました";
+      console.log(result);
+      req.session.username =  result[0].name;
+      res.render('change_info.ejs', {result_message: result_message});
+    }
+  )
   res.render('reserve_one.ejs');
 })
 
@@ -328,6 +342,11 @@ app.post('/reserve_three', (req, res) => {
 
 app.get('/reserve_done', (req, res) => {
   res.render('reserve_done.ejs'); 
+})
+
+// 管理者簡易画面
+app.get('/admin', (req, res) => {
+  res.render('admin.ejs'); 
 })
 
 let port = 3002;
