@@ -1,5 +1,79 @@
 @import url("/css/set/var.css");
 
-.reserve-three-wrapper {
-  
+.reserve-three-whole-wrapper {
+  padding: 33px 20px 17px;
+}
+.reserve-three-creditcards-title {
+  font-weight: 700;
+}
+.reserve-three-creditcards-list {
+  background-image: url(../images/ico_select_arrow.png);
+  background-repeat: no-repeat;
+  background-size: 18px 8px;
+  background-position: right 15px center;
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  cursor: pointer;
+  height: 40px;
+  margin-top: 7px;
+  padding-left: 13px;
+  width: 100%;
+}
+
+.reserve-three-nowstep {
+  font-family: 'Lato-thin';
+  margin-top: 477px;
+  text-align: center;
+}
+
+/* 情報まとめ */
+.reserve-three-info-box {
+  background-color: var(--base-yellow);
+  border-radius: 10px;
+  color: var(--base-black);
+ 
+  height: 165px;
+  margin-top: 7px;
+  padding: 20px 10px 13px;
+  width: 100%;
+}
+.reserve-three-movieinfo-wrapper {
+  display: flex;
+}
+.reserve-three-movieinfo-wrapper div:last-child {
+  margin-left: 30px;
+}
+.reserve-three-movieinfo-wrapper div p:last-child {
+  margin-top: 5px;
+}
+.reserve-three-fee-info {
+  color: black;
+  display: flex;
+  font-weight: 700;
+  justify-content: center;
+  margin-top: 20px;
+}
+.reserve-three-fee-info p:last-child {
+  margin-left: 20px;
+}
+.reserve-three-info-box button {
+  background-color: var(--base-black);
+  border-radius: 5px;
+  color: var(--base-yellow);
+  height: 40px;
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+/* 戻る */
+.reserve-three-backpage {
+  font-size: 12px;
+  margin-top: 13px;
+  text-align: center;
+}
+
+/* 選択されている席の情報 */
+.reserve-three-selected-info {
+  display: none;
 }

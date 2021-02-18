@@ -52,7 +52,7 @@
       <% }) %>
     </div>
 
-    <form method="post" action="/reserve_two">
+    <form method="get" action="/reserve_three">
       <div class="reserve-two-selectseat-wrapper">
         <div class="reserve-two-screenline">
           <img src="/images/screen_line.png">
@@ -124,10 +124,16 @@
       </div>
 
       <p class="reserve-two-now-step">2/3</p>
-      <input type="submit" class="reserve-two-btn-next" value="投票する">
+      <input type="submit" class="reserve-two-btn-next" value="支払いに進む" id="next_btn">
     </form>
   </main>
 <script>
+window.onload = ()=> {
+  seats.forEach((seat)=> {
+    seat.checked = false;
+  })
+}
+
 // 予約されている席のデータ取り出し処理
 let taken_seats_info = document.querySelectorAll(".reserve-two-taken-seat-info");
 // 予約されているデータの数字を入れる配列
@@ -174,6 +180,15 @@ seats.forEach((seat)=> {
     }
   })
 })
+
+// 席が選択されていない場合、次に進めない処理
+let next_btn = document.getElementById("next_btn");
+next_btn.addEventListener("click", (e)=> {
+  if(selected_seats_counter == 0) {
+    e.preventDefault();
+  }
+})
+
 </script>
 </body>
 </html>

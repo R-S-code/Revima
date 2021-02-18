@@ -10,8 +10,9 @@ app.use(express.urlencoded({extended: false}));
 
 // db info
 const arr = require('./.db_sec_info.js');
+const { response } = require('express');
 const connection = mysql.createConnection({
- host: arr.host,
+  host: arr.host,
   user: arr.dbuser,
   password: arr.dbpassword,
   database: arr.db,
@@ -242,9 +243,9 @@ app.get('/payment_info_add', (req, res) => {
   res.render('payment_info_add.ejs');
 })
 app.post('/payment_info_add', (req, res) => {
-  let yourname = req.body.yourname;
-  let expiration = req.body.expiration;
-  let cvv = req.body.cvv;
+  const yourname = req.body.yourname;
+  const expiration = req.body.expiration;
+  const cvv = req.body.cvv;
   const creditnums = req.body.creditnum;
   let your_creditnumber = "";
   creditnums.forEach((creditnum) => {
@@ -268,8 +269,62 @@ app.post('/payment_info_add', (req, res) => {
   );
 })
 
-app.get('/payment_info_update', (req, res) => {
-  res.render('payment_info_update.ejs');
+app.get('/payment_info_update/:id', (req, res) => {
+  paymentid = req.params.id;
+  connection.query(
+    'select * from payment where paymentid = ?',
+    [paymentid],
+    (error, result)=> {
+      if(error) {
+        console.log("クレジットカード編集画面表示エラー");
+        res.redirect("/payment_info");
+      } else {
+        console.log(result);
+        res.render("payment_info_update.ejs", {creditinfo: result});
+      }
+    }
+  )
+})
+app.post('/payment_info_update/:id', (req, res) => {
+  const creditnums = req.body.creditnum;
+  let your_creditnumber = "";
+  creditnums.forEach((creditnum) => {
+    your_creditnumber += creditnum;
+  });
+  const yourname = req.body.yourname;
+  const expiration = req.body.expiration;
+  const cvv = req.body.cvv;
+  paymentid = req.params.id;
+
+  connection.query(
+    'UPDATE payment SET creditnumber = ?, name = ?, expiration = ?, cvv = ? WHERE paymentid = ?',
+    [your_creditnumber, yourname, expiration, cvv, paymentid],
+    (error, result)=> {
+      if(error) {
+        console.log("クレジットカード編集処理エラー");
+        console.log(error); 
+      } else {
+        console.log(result);
+        res.redirect("/payment_info");
+      }
+    }
+  )
+})
+app.get('/payment_info_delete/:id', (req, res) => {
+  paymentid = req.params.id;
+  connection.query(
+    'delete from payment where paymentid = ?',
+    [paymentid],
+    (error, result)=> {
+      if(error) {
+        console.log("クレジットカード削除エラー");
+        res.redirect("/payment_info");
+      } else {
+        console.log(result);
+        res.redirect("/payment_info");
+      }
+    }
+  )
 })
 
 // 投票処理
@@ -320,11 +375,12 @@ app.get('/introduce_movie/:id', (req, res) => {
 
 // 予約処理
 app.get('/reserve_one', (req, res) => {
+  req.session.playid = 1;
   res.render('reserve_one.ejs');
 })
 
-app.get("/reserve_two/:id", (req, res) => {
-	playid = req.params.id;
+app.get("/reserve_two", (req, res) => {
+	playid = req.session.playid;
 	connection.query(
 		"select seat from reserve where playid = ?",
 		[playid],
@@ -339,9 +395,50 @@ app.get("/reserve_two/:id", (req, res) => {
 		}
 	);
 });
-
-app.post('/reserve_three', (req, res) => {
-  res.render('/reserve_three'); 
+app.get("/reserve_three", (req,res)=> {
+  const selected_seats = req.query.seat;
+  console.log("選択されている席は:" + selected_seats);
+  const userid = req.session.userid;
+  connection.query(
+    'SELECT * FROM payment WHERE userid = ?',
+    [userid],
+    (error1, results1) => {
+      if (error1) {
+        console.log("エラー")
+        console.log(error);
+        res.redirect('/');
+      } else {
+        console.log(results1);
+        const playid = req.session.playid;
+        connection.query(
+          'SELECT title, start, charge FROM play JOIN movies on play.movieid = movies.movieid WHERE playid = ?',
+          [playid],
+          (error2, results2) => {
+            if(error2){
+              console.log("エラー")
+              res.redirect('/');
+            } else {
+              res.render('reserve_three.ejs', {
+                selected_seats: selected_seats,
+                playid: playid,
+                creditcards: results1,
+                reserve_info: results2
+              })
+            }
+          }
+        )
+      }
+    }
+  );
+})
+app.post("/reserve_three",(req,res)=> {
+  // const userid = req.session.userid;
+  // const playid = req.session.playid;
+  const reserved_seats = req.body.seat;
+  
+  connection.query(
+    'INSERT INTO reserve (playid, userid, seat) VALUES' + 
+  )
 })
 
 app.get('/reserve_done', (req, res) => {

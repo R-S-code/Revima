@@ -11,30 +11,32 @@
 <body>
   <%- include("./set/header"); %>
   <main class="payment-info-update-whole-wrapper">
-    <form>
+    <form action="/payment_info_update/<%= creditinfo[0].paymentid %>" method="POST">
       <h1 class="payment-info-update-credit-title">クレジットカード番号</h1>
       <div class="payment-info-update-inputnum-wrapper">
-        <input type="tel" maxlength="4" placeholder="0000">
+        <!-- 番号を4つに分ける -->
+        <% let creditnums = creditinfo[0].creditnumber.match(/.{4}/g); %>
+        <input type="tel" maxlength="4" value="<%= creditnums[0] %>" name="creditnum"> 
         <span>-</span>
-        <input type="tel" maxlength="4" placeholder="0000">
+        <input type="tel" maxlength="4" value="<%= creditnums[1] %>" name="creditnum">
         <span>-</span>
-        <input type="tel" maxlength="4" placeholder="0000">
+        <input type="tel" maxlength="4" value="<%= creditnums[2] %>" name="creditnum">
         <span>-</span>
-        <input type="tel" maxlength="4" placeholder="0000">
+        <input type="tel" maxlength="4" value="<%= creditnums[3] %>" name="creditnum">
       </div>
 
       <h1 class="payment-info-update-name-title">クレジットカード氏名</h1>
-      <input type="text" class="payment-info-inputname" placeholder="Revima Revima" name="yourname">
+      <input type="text" class="payment-info-update-inputname" value="<%= creditinfo[0].name %>" name="yourname">
 
       <div class="payment-info-update-contets-wrapper">
         <div>
           <h1>有効期限</h1>
-          <input type="text" maxlength="5" placeholder="22/02" name="expiration">
+          <input type="text" maxlength="5" value="<%= creditinfo[0].expiration %>" name="expiration">
         </div>
 
         <div>
           <h1>CVV</h1>
-          <input type="tel" maxlength="3" placeholder="000" name="cvv">
+          <input type="tel" maxlength="3" value="<%= creditinfo[0].cvv %>" name="cvv">
         </div>
       </div>
       <input type="submit" value="支払い情報を更新する">
