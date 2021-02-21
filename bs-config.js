@@ -14,7 +14,7 @@
  */
 module.exports = {
     "ui": {
-        "port": 3003
+        "port": 3300
     },
     "files": false,
     "watchEvents": [
@@ -112,6 +112,6 @@ module.exports = {
         "**/*.ejs",
         "**/*.css"
     ],
-    "proxy": "http://localhost:3002",
+    "proxy": "http://localhost:3300",
     "port": 4400,
 };

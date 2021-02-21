@@ -10,7 +10,6 @@ app.use(express.urlencoded({extended: false}));
 
 // db info
 const arr = require('./.db_sec_info.js');
-const { response } = require('express');
 const connection = mysql.createConnection({
   host: arr.host,
   user: arr.dbuser,
@@ -44,6 +43,10 @@ app.get('/', (req, res) => {
   if(res.locals.isLoggedIn === false) {
     res.render('nologin_home.ejs');
   } else {
+    connection.query(
+      'SELECT * FROM votes WHERE userid = ?',
+      [req.session.userid],
+    )
     res.render('home.ejs');
   }
 })
@@ -214,10 +217,52 @@ app.post('/change_info', (req, res) => {
   )
 })
 app.get('/reserve_list', (req, res) => {
-  res.render('reserve_list.ejs');
+  const userid = req.session.userid;
+  connection.query(
+    'SELECT * FROM play JOIN reserve ON play.playid = reserve.playid JOIN movies ON play.movieid = movies.movieid WHERE reserve.userid = ?',
+    [userid],
+    (error, results)=> {
+      if(error) {
+        console.log()
+        console.log(error);
+      } else {
+        console.log(results);
+        res.render('reserve_list.ejs',{reserved_info: results});
+      }
+    }
+  )
 })
-app.get('/reserve_detail', (req, res) => {
-  res.render('reserve_detail.ejs');
+app.get('/reserve_detail/:id', (req, res) => {
+  reservedid = req.params.id;
+  connection.query(
+    'SELECT * FROM reserve JOIN seats on reserve.seat = seats.seat JOIN screens on seats.screen = screens.screen JOIN play ON reserve.playid = play.playid JOIN movies ON play.movieid = movies.movieid  WHERE reserveid = ? AND screens.screen = play.screen',
+    [reservedid],
+    (error ,results)=> {
+      if(error) {
+        console.log("予約詳細エラー");
+        console.log(error);
+      } else {
+        console.log(results);
+        res.render('reserve_detail.ejs', {detail_info: results});
+      }
+    } 
+  )
+})
+app.get('/reserve_detail_delete/:id', (req, res) => {
+  reserveid = req.params.id;
+  connection.query(
+    'delete from reserve where reserveid = ?',
+    [reserveid],
+    (error, result)=> {
+      if(error) {
+        console.log("クレジットカード削除エラー");
+        res.redirect("/reserve_list");
+      } else {
+        console.log(result);
+        res.redirect("/reserve_list");
+      }
+    }
+  )
 })
 
 // 支払い情報
@@ -396,8 +441,8 @@ app.get("/reserve_two", (req, res) => {
 	);
 });
 app.get("/reserve_three", (req,res)=> {
-  const selected_seats = req.query.seat;
-  console.log("選択されている席は:" + selected_seats);
+  let selected_seats = req.query.seat;
+  console.log(JSON.stringify(selected_seats));
   const userid = req.session.userid;
   connection.query(
     'SELECT * FROM payment WHERE userid = ?',
@@ -432,17 +477,52 @@ app.get("/reserve_three", (req,res)=> {
   );
 })
 app.post("/reserve_three",(req,res)=> {
-  // const userid = req.session.userid;
-  // const playid = req.session.playid;
+  const userid = req.session.userid;
+  const playid = req.session.playid;
   const reserved_seats = req.body.seat;
-  
+  var bind_holder = "";
+  var values_holder = [];
+  if(Array.isArray(reserved_seats) == false) {
+    bind_holder += "(?, ?, ?)";
+    values_holder.push(playid, userid, Number(reserved_seats));
+  } else {
+    reserved_seats.forEach((reserved_seat)=> {
+      bind_holder += "(?, ?, ?),";
+      values_holder.push(playid, userid, Number(reserved_seat));
+    })
+    bind_holder = bind_holder.slice(0, -1);
+  }
   connection.query(
-    'INSERT INTO reserve (playid, userid, seat) VALUES' + 
+    `INSERT INTO reserve (playid, userid, seat) VALUES ${bind_holder}`,
+    values_holder,
+    (error,result)=> {
+      if(error) {
+        console.log("予約エラー");
+        console.log(error);
+      } else {
+        console.log(result);
+        res.redirect(`/reserve_done/${playid}`);
+      }
+    }
   )
 })
 
-app.get('/reserve_done', (req, res) => {
-  res.render('reserve_done.ejs'); 
+app.get('/reserve_done/:id', (req, res) => {
+  const playid = req.params.id;
+  connection.query(
+    'SELECT * FROM play JOIN movies ON play.movieid = movies.movieid WHERE playid = ?',
+    [playid],
+    (error, result)=> {
+      if(error) {
+        console.log("予約完了エラー");
+        console.log(error);
+      } else {
+        console.log(result);
+        res.render('reserve_done.ejs', {info: result}); 
+      }
+    }
+  )
+ 
 })
 
 // 管理者簡易画面
@@ -454,6 +534,6 @@ app.get('/result', (req, res) => {
   res.render('result.ejs');
 })
 
-let port = 3002;
+let port = 3300;
 console.log(`running ${port}`);
 app.listen(port);

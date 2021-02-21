@@ -14,23 +14,32 @@
 
   <main>
     <div class="reserve-list-wrapper">
-      <div class="reserve-list-container">
-        <div class="reserve-list-upper-wrapper">
-          <p>2021/2/7</p>
-          <p><a href="/reserve_detail">予約詳細 ></a></p>
-        </div>
-      
-        <h1>ターミナル</h1>
-      </div>
 
-      <div class="reserve-list-container">
-        <div class="reserve-list-upper-wrapper">
-          <p>2021/2/7</p>
-          <p><a href="/reserve_detail">予約詳細 ></a></p>
+      <% reserved_info.forEach((info)=>{ %>
+        <div class="reserve-list-container">
+          <div class="reserve-list-upper-wrapper">
+            <% let months = {
+                  Jan: "1", 
+                  Feb: "2", 
+                  Mar: "3",
+                  Apr: "4", 
+                  May: "5", 
+                  Jun: "6", 
+                  Jul: "7",
+                  Aug: "8",
+                  Sep: "9",
+                  Oct: "10",
+                  Nov: "11",
+                  Dec: "12"
+               };
+               let time_box = String(info.start).split(' '); 
+            %>
+            <p><%= time_box[3] %>/<%= months[time_box[1]] %>/<%= time_box[2] %></p>
+            <p><a href="/reserve_detail/<%= info.reserveid %>">予約詳細 ></a></p>
+          </div>
+          <h1><%= info.title %></h1>
         </div>
-      
-        <h1>ターミナル</h1>
-      </div>
+      <% }) %>
 
       <a href="/mypage"><button class="reserve-list-back-maypage">マイページに戻る</button></a>
     </div>

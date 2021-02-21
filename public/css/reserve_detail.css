@@ -13,7 +13,17 @@
   font-family: 'Lato-Bold';
   font-size: 18px;
   font-weight: 700;
+}
+.reserve-detail-for-delete-container {
+  align-items: center;
+  display: flex;
+  font-size: 12px;
   margin-top: 50px;
+}
+.reserve-detail-for-delete-container p {
+  color: var(--base-red);
+  cursor: pointer;
+  margin-left: auto;
 }
 .reserve-detail-first-container {
   color: var(--base-gray);
@@ -21,6 +31,7 @@
   margin-top: 20px;
 }
 .reserve-detail-first-container p:last-child {
+  font-family: 'Lato';
   margin-left: 35px;
 }
 
@@ -45,6 +56,9 @@
 .reserve-detail-seat-wrapper {
   margin-top: 20px;
 }
+.reserve-detail-seat-wrapper p span {
+  color: var(--base-yellow);
+} 
 
 /* 3 */
 .reserve-detail-third-wrapper {

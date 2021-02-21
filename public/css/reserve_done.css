@@ -33,16 +33,16 @@
 }
 
 /* ホームに戻るボタン */
-.reserve-done-btn-wrpper  {
+.reserve-done-btn-wrapper {
+  margin-top: 165px;
   padding: 0 20px;
 }
-.reserve-done-btn-wrapper button {
+.reserve-done-btn {
   background-color: var(--base-yellow);
   border-radius: 5px;
   color: var(--base-black);
   display: block;
   height: 40px;
-  margin: 165px auto 0;
   text-align: center;
   width: 100%;
 }

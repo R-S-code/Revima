@@ -49,7 +49,7 @@
             };
             let weeks = {
               Mon: "月", 
-              Tue:"火", 
+              Tue: "火", 
               Wed: "水",
               Thu: "木", 
               Fri: "金", 
@@ -63,14 +63,22 @@
       </div>
 
       <div class="reserve-three-fee-info">
-        <p>大人<%= selected_seats.length %>枚</p>
-        <p><%= selected_seats.length * reserve_info[0].charge %>円</p>
+        <% if(Array.isArray(selected_seats) == false) { %>
+          <p>大人1枚</p>
+          <p><%= 1 * reserve_info[0].charge %>円</p>
+        <% } else { %>
+          <p>大人<%= selected_seats.length %>枚</p>
+          <p><%= selected_seats.length * reserve_info[0].charge %>円</p>
+        <% } %>
       </div>
 
-      <% selected_seats.forEach((selected_seat)=> { %>
+      <% if(Array.isArray(selected_seats) == false) { %>
+        <input class="reserve-three-selected-info" value="<%= selected_seats.split(',')[0] %>" name="seat">
+      <% } else { %>
+        <% selected_seats.forEach((selected_seat)=> { %>
         <input class="reserve-three-selected-info" value="<%= selected_seat.split(',')[0] %>" name="seat">
-      <% }) %>
-      
+      <% })} %>
+
       <button type="submit">購入する</button>
     </form>
     <a href="/reserve_two"><p class="reserve-three-backpage">座席選択に戻る</p></a>

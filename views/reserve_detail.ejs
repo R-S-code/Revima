@@ -12,34 +12,54 @@
   <%- include("./set/header"); %>
   <main class="reserve-detail-whole-wrapper">
     <div class="reserve-detail-first-wrapper">
-      <h1>ターミナル</h1>
+      <div class="reserve-detail-for-delete-container">
+        <h1><%= detail_info[0].title %></h1>
+        <p><a href="/reserve_detail_delete/<%= detail_info[0].reserveid %>">予約を取り消す</a></p>
+      </div>
+     
       <div class="reserve-detail-first-container">
         <p>上映時間</p>
-        <p>2021/2/7 20:24</p>
+        <%  let months = {
+              Jan: "1", 
+              Feb: "2", 
+              Mar: "3",
+              Apr: "4", 
+              May: "5", 
+              Jun: "6", 
+              Jul: "7",
+              Aug: "8",
+              Sep: "9",
+              Oct: "10",
+              Nov: "11",
+              Dec: "12"
+            };
+            let time_box = String(detail_info[0].start).split(' '); 
+        %>
+        <p><%= time_box[3] %>/<%= months[time_box[1]] %>/<%= time_box[2] %> <%= String(time_box[4]).slice(0, -3) %>-</p>
       </div>
     </div>
 
     <div class="reserve-detail-second-wrapper">
       <div class="reserve-detail-second-container">
         <p>大人</p>
-        <p>2枚</p>
-        <p>¥3000</p>
+        <p><%= detail_info.length %>枚</p>
+        <p>¥<%= detail_info.length * detail_info[0].charge %></p>
       </div>
       <div class="reserve-detail-seat-wrapper">
-        <p>● B-5</p>
+        <p><span>●</span> <%= detail_info[0].kind %></p>
       </div>
     </div>
 
     <div class="reserve-detail-third-wrapper">
       <div class="reserve-detail-third-upper-container">
         <p>小計</p>
-        <p>¥3000</p>
+        <p>¥<%= detail_info.length * detail_info[0].charge %></p>
       </div>
 
       <div class="reserve-detail-third-container">
         <div>
           <p>ご請求金額</p>
-          <p>¥3000</p>
+          <p>¥<%= detail_info.length * detail_info[0].charge %></p>
         </div>
         <div>
           <p>お支払い方法</p>
@@ -48,6 +68,6 @@
       </div>
     </div>
 
-    <a href="reserve_list"><button class="reserve-detail-backbtn">予約一覧に戻る<button></a>
+    <a href="/reserve_list"><button class="reserve-detail-backbtn">予約一覧に戻る<button></a>
   </main>
 </body>
