@@ -56,17 +56,26 @@
 .home-vote-btn-wrapper {
   padding: 0 20px;
 }
-.home-vote button {
+.home-vote-btn {
   background-color: var(--base-yellow);
   border-radius: 5px;
+  color: var(--base-black);
   display: block;
   height: 40px;
   margin: 25px auto 0;
   text-align: center;
   width: 100%;
 }
-.home-vote button {
+.home-voted-btn {
+  background-color: var(--base-gray);
+  border-radius: 5px;
   color: var(--base-black);
+  cursor: not-allowed;
+  display: block;
+  height: 40px;
+  margin: 25px auto 0;
+  text-align: center;
+  width: 100%;
 }
 .home-copyright {
   color: var(--base-white);

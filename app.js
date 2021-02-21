@@ -43,11 +43,33 @@ app.get('/', (req, res) => {
   if(res.locals.isLoggedIn === false) {
     res.render('nologin_home.ejs');
   } else {
+    var votes_result = null;
     connection.query(
       'SELECT * FROM votes WHERE userid = ?',
       [req.session.userid],
+      (error, result)=> {
+        if(result.length > 0) {
+          votes_result = result;
+        } else {
+          votes_result = [];
+        }
+      }
     )
-    res.render('home.ejs');
+   
+    var payment_result = null;
+    connection.query(
+      'SELECT * FROM payment WHERE userid = ?',
+      [req.session.userid],
+      (error, result)=> {
+        if(result.length > 0) {
+          payment_result = result;
+          res.render('home.ejs', {your_vote: votes_result, your_payment: payment_result});
+        } else {
+          payment_result = [];
+          res.render('home.ejs', {your_vote: votes_result, your_payment: payment_result});
+        }
+      }
+    )
   }
 })
 
