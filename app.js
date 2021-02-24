@@ -12,12 +12,15 @@ app.use(express.urlencoded({ extended: false }));
 const arr = require("./.db_sec_info.js");
 const connection = mysql.createConnection({
 <<<<<<< HEAD
+<<<<<<< HEAD
 	host: arr.host,
 	user: arr.dbuser,
 	password: arr.dbpassword,
 	database: arr.db,
 	multipleStatements: true,
 =======
+=======
+>>>>>>> 23ed3b4d9b641c3c6aa94579146f1d151c0c8ce9
   host: arr.host,
   user: arr.dbuser,
   password: arr.dbpassword,
@@ -46,6 +49,7 @@ app.use((req, res, next) => {
 	next();
 });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 app.get("/", (req, res) => {
 	if (res.locals.isLoggedIn === false) {
@@ -124,6 +128,8 @@ app.post(
 	}
 );
 =======
+=======
+>>>>>>> 23ed3b4d9b641c3c6aa94579146f1d151c0c8ce9
 // トップ
 app.get('/', (req, res) => {
   if(res.locals.isLoggedIn === false) {
@@ -234,9 +240,12 @@ app.get("/regist_done", (req, res) => {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.get("/login", (req, res) => {
 	res.render("login.ejs", { errors: [] });
 =======
+=======
+>>>>>>> 23ed3b4d9b641c3c6aa94579146f1d151c0c8ce9
 // ログイン
 app.get('/login', (req, res) => {
   res.render('login.ejs', { errors: [] });
@@ -342,6 +351,7 @@ app.post(
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.get("/logout", (req, res) => {
 	req.session.destroy((error) => {
 		res.redirect("/");
@@ -402,6 +412,8 @@ app.post("/vote", (req, res) => {
 	res.redirect("/vote");
 });
 =======
+=======
+>>>>>>> 23ed3b4d9b641c3c6aa94579146f1d151c0c8ce9
 // ログアウト
 app.get('/logout', (req, res) => {
   req.session.destroy((error) => {
@@ -603,6 +615,39 @@ app.get('/vote', (req, res) => {
 })
 app.post('/vote', (req, res) => {
   const selected_movies = req.body.movie;
+<<<<<<< HEAD
+=======
+  connection.query(
+    'select max(electionid) from elections',
+    (error1, result1)=> {
+      let bind_holder = "";
+      let values_holder = [];
+      election_id = JSON.stringify(result1[0]["max(electionid)"]);
+      selected_movies.forEach((selected_movie)=> {
+        bind_holder += "(?, ?, ?),";
+        values_holder.push(election_id, req.session.userid, selected_movie);
+      })
+      bind_holder = bind_holder.slice(0, -1);
+      console.log(values_holder);
+      connection.query(
+        `INSERT INTO votes (electionid, userid, movieid) values ${bind_holder}`,
+        values_holder,
+        (error2, result2) => {
+          if(error2) {
+            console.log("投票エラー");
+            console.log(error2);
+          } else {
+            res.redirect('/'); 
+          }
+        }
+      )
+    }
+  )
+})
+
+app.get('/introduce_movie/:id', (req, res) => {
+  movieid = req.params.id;
+>>>>>>> 23ed3b4d9b641c3c6aa94579146f1d151c0c8ce9
   connection.query(
     'select max(electionid) from elections',
     (error1, result1)=> {
@@ -662,10 +707,13 @@ app.post("/reserve_three", (req, res) => {
 	res.redirect("/reserve_three");
 });
 
+<<<<<<< HEAD
 app.get("/reserve_done", (req, res) => {
 	res.render("reserve_done.ejs");
 });
 =======
+=======
+>>>>>>> 23ed3b4d9b641c3c6aa94579146f1d151c0c8ce9
 // 予約処理
 app.get('/reserve_one', (req, res) => {
   req.session.playid = 1;
@@ -753,6 +801,7 @@ app.post("/reserve_three",(req,res)=> {
       }
     }
   )
+<<<<<<< HEAD
 })
 
 app.get('/reserve_done/:id', (req, res) => {
@@ -773,6 +822,28 @@ app.get('/reserve_done/:id', (req, res) => {
  
 })
 
+=======
+})
+
+app.get('/reserve_done/:id', (req, res) => {
+  const playid = req.params.id;
+  connection.query(
+    'SELECT * FROM play JOIN movies ON play.movieid = movies.movieid WHERE playid = ?',
+    [playid],
+    (error, result)=> {
+      if(error) {
+        console.log("予約完了エラー");
+        console.log(error);
+      } else {
+        console.log(result);
+        res.render('reserve_done.ejs', {info: result}); 
+      }
+    }
+  )
+ 
+})
+
+>>>>>>> 23ed3b4d9b641c3c6aa94579146f1d151c0c8ce9
 // 管理者簡易画面
 app.get('/admin', (req, res) => {
   res.render('admin.ejs'); 
