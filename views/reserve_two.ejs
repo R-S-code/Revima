@@ -44,7 +44,15 @@
     </div>
 
     <!-- シート選択 -->
-    <form method="post" action="/reserve_two">
+
+    <!-- 予約されている席の情報 -->
+    <div class="reserve-two-taken-seats-wrapper">
+      <% reserved_seats.forEach((reserved_seat)=> { %>
+        <p class="reserve-two-taken-seat-info"><%= reserved_seat.seat %></p>
+      <% }) %>
+    </div>
+
+    <form method="get" action="/reserve_three">
       <div class="reserve-two-selectseat-wrapper">
         <div class="reserve-two-screenline">
           <img src="/images/screen_line.png">
@@ -116,37 +124,71 @@
       </div>
 
       <p class="reserve-two-now-step">2/3</p>
-      <input type="submit" class="reserve-two-btn-next" value="投票する">
+      <input type="submit" class="reserve-two-btn-next" value="支払いに進む" id="next_btn">
     </form>
   </main>
 <script>
+window.onload = ()=> {
+  seats.forEach((seat)=> {
+    seat.checked = false;
+  })
+}
+
+// 予約されている席のデータ取り出し処理
+let taken_seats_info = document.querySelectorAll(".reserve-two-taken-seat-info");
+// 予約されているデータの数字を入れる配列
+let taken_seats_box = [];
+taken_seats_info.forEach((taken_seat_info)=> {
+  taken_seats_box.push(taken_seat_info.innerText);
+})
+
+// 全てのシートに処理
 const seats = document.querySelectorAll(".reserve-two-line-wrapper input");
 const selected_seats = document.getElementById("selected_seats");
 
 let selected_seats_counter = 0;
 
-// シートクリック時の処理
 seats.forEach((seat)=> {
+
+  taken_seats_box.forEach((taken_seat)=> {
+    if(seat.value.split(',')[0] == taken_seat) {
+      seat.classList.add("reserve-two-taken-seat");
+    }
+  })
+
+  // シートクリック時の処理
   seat.addEventListener("click", (e)=> {
-    let seat_id =  seat.value.split(',')[0];
-    let seat_name = seat.value.split(',')[1]
-    
-    if(seat.checked === true) {
-      if(selected_seats_counter < 4) {
-        selected_seats_counter++;
-        let selected_seat = document.createElement("li");
-        selected_seat.id = seat_id
-        selected_seat.innerHTML = "<span class='reserve-two-selected-circle'>●</span>" + seat_name;
-        selected_seats.appendChild(selected_seat);
+    if(seat.classList.contains("reserve-two-taken-seat") == false) {
+      let seat_id = seat.value.split(',')[0];
+      let seat_name = seat.value.split(',')[1]
+      
+      if(seat.checked === true) {
+        if(selected_seats_counter < 4) {
+          selected_seats_counter++;
+          let selected_seat = document.createElement("li");
+          selected_seat.id = seat_id
+          selected_seat.innerHTML = "<span class='reserve-two-selected-circle'>●</span>" + seat_name;
+          selected_seats.appendChild(selected_seat);
+        } else {
+          e.preventDefault();
+        }
       } else {
-        e.preventDefault();
+        selected_seats_counter--;
+        // 要素を削除
+        document.getElementById(seat_id).remove();
       }
-    } else {
-      selected_seats_counter--;
-      document.getElementById(seat_id).remove();
     }
   })
 })
+
+// 席が選択されていない場合、次に進めない処理
+let next_btn = document.getElementById("next_btn");
+next_btn.addEventListener("click", (e)=> {
+  if(selected_seats_counter == 0) {
+    e.preventDefault();
+  }
+})
+
 </script>
 </body>
 </html>

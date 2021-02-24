@@ -1,0 +1,82 @@
+.payment-info-update-whole-wrapper {
+  padding: 33px 20px;
+}
+.payment-info-update-inputnum-wrapper {
+  align-items: center;
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  display: flex;
+  height: 40px;
+  padding: 0 13px;
+  justify-content: left;
+}
+/* クレジットカード番号 */
+.payment-info-update-credit-title {
+  font-weight: 700;
+}
+.payment-info-update-inputnum-wrapper {
+  margin-top: 7px;
+}
+.payment-info-update-inputnum-wrapper input {
+  display: block;
+  line-height: 40px;
+  text-align: center;
+  width: 35px;
+}
+.payment-info-update-inputnum-wrapper span {
+  display: block;
+  margin: 0 3px;
+}
+/* 名前 */
+.payment-info-update-name-title {
+  font-weight: 700;
+  margin-top: 20px;
+}
+.payment-info-update-inputname {
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 13px;
+  margin-top: 7px;
+  width: 100%;
+}
+/* その他 */
+.payment-info-update-contets-wrapper {
+  display: flex;
+  justify-content: left;
+  margin-top: 20px;
+}
+.payment-info-update-contets-wrapper div:last-child {
+  margin-left: 26px;
+}
+.payment-info-update-contets-wrapper div h1 {
+  font-weight: 700;
+}
+.payment-info-update-contets-wrapper div input {
+  border: 1px solid var(--base-white);
+  border-radius: 5px;
+  display: block;
+  height: 40px;
+  margin-top: 7px;
+  text-align: center;
+  width: 70px;
+}
+/* 送信ボタン */
+input[type='submit'] {
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  color: var(--base-black);
+  height: 40px;
+  margin-top: 450px;
+  text-align: center;
+  width: 100%;
+}
+
+/* マイページに戻るボタン */
+.payment-info-update-back-btn {
+  display: block;
+  font-size: 13px;
+  margin-top: 18px;
+  text-align: center;
+  width: 100%;
+}

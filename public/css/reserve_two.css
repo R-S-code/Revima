@@ -51,7 +51,12 @@
   height: 32px;
   width: 24px;
 }
+/* 予約されている席の情報 */
+.reserve-two-taken-seats-wrapper {
+  display: none;
+}
 
+/* 座席選択のスタイル */
 .reserve-two-selectseat-wrapper {
   border: 1px solid #EFEFEF; 
   height: 390px;
@@ -111,6 +116,12 @@
   display: block;
   height: 32px;
   width: 24px;
+}
+
+/* 選択されている席のスタイル */
+.reserve-two-taken-seat:before {
+  background-color: var(--base-gray) !important;
+  cursor: not-allowed !important;
 }
 
 .reserve-two-selected-seats-wrapper {

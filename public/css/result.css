@@ -1,0 +1,95 @@
+@import url("/css/set/var.css");
+
+.result-wrapper {
+  padding: 0 20px 195px;
+}
+.result-main-sentence{
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  padding-top: 33px;
+}
+
+.result-text{
+  text-align: center;
+  width: 100px;
+}
+.result-text h2{
+  font-size: 14px;
+  margin-top: 5px;
+}
+.result-text p{
+  margin-top: 5px;
+}
+
+/* 1位 */
+.result-no1{
+  text-align: center;
+}
+.result-no1 h2{
+  font-size: 18px;
+  font-weight: 700;
+  padding-bottom: 4px;
+}
+.result-no1 p {
+  font-size: 14px;
+}
+.result-ranking1 img{ 
+  position: relative;
+  text-align: center;
+  top: 18px;
+  width: 36px;
+}
+.result-no1-movie-img img{
+  text-align: center;
+  width: 180px;
+}
+
+.result-box {
+  display: flex;
+  padding: 0 40px;
+}
+
+/* ２位 */
+.result-no2{
+  text-align: center;
+  word-break: normal;
+}
+.result-ranking2 img{
+  position: relative;
+  text-align: center;
+  top: 18px;
+  width: 36px;
+}
+.result-no2-movie-img img{
+  text-align: center;
+  width: 100px;
+}
+
+/* 3位 */
+.result-no3 {
+  margin-left: auto;
+  text-align: center;
+}
+.result-ranking3 img{
+  position: relative;
+  text-align: center;
+  top: 18px;
+  width: 36px;
+}
+.result-no3-movie-img img{
+  text-align: center;
+  width: 100px;
+}
+
+.result-reservation{
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  color: #252525;
+  font-size: 18px;
+  font-weight: 700;
+  height: 64px;
+  margin-top: 40px;
+  text-align: center;
+  width: 100%;
+}

@@ -1,0 +1,30 @@
+@import url("/css/set/var.css");
+
+.reserve-list-wrapper {
+  padding: 20px 0 25px;
+}
+.reserve-list-container {
+  box-shadow: 0 10px 0 #252525;
+  margin-bottom: 10px;
+  padding: 25px 20px 55px;
+}
+.reserve-list-container h1 {
+  font-family: 'Lato-Bold';
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 25px;
+}
+.reserve-list-upper-wrapper {
+  color: var(--base-gray);
+  display: flex;
+  font-family: 'Lato-Bold';
+}
+.reserve-list-upper-wrapper p:last-child {
+  font-weight: 700;
+  margin-left: auto;
+}
+.reserve-list-back-maypage {
+  display: block;
+  font-size: 12px;
+  margin: 285px auto 0;
+}

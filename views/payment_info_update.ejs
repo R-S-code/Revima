@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>支払い情報更新</title>
+  <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
+  <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/payment_info_update.css" />
+</head>
+<body>
+  <%- include("./set/header"); %>
+  <main class="payment-info-update-whole-wrapper">
+    <form action="/payment_info_update/<%= creditinfo[0].paymentid %>" method="POST">
+      <h1 class="payment-info-update-credit-title">クレジットカード番号</h1>
+      <div class="payment-info-update-inputnum-wrapper">
+        <!-- 番号を4つに分ける -->
+        <% let creditnums = creditinfo[0].creditnumber.match(/.{4}/g); %>
+        <input type="tel" maxlength="4" value="<%= creditnums[0] %>" name="creditnum"> 
+        <span>-</span>
+        <input type="tel" maxlength="4" value="<%= creditnums[1] %>" name="creditnum">
+        <span>-</span>
+        <input type="tel" maxlength="4" value="<%= creditnums[2] %>" name="creditnum">
+        <span>-</span>
+        <input type="tel" maxlength="4" value="<%= creditnums[3] %>" name="creditnum">
+      </div>
+
+      <h1 class="payment-info-update-name-title">クレジットカード氏名</h1>
+      <input type="text" class="payment-info-update-inputname" value="<%= creditinfo[0].name %>" name="yourname">
+
+      <div class="payment-info-update-contets-wrapper">
+        <div>
+          <h1>有効期限</h1>
+          <input type="text" maxlength="5" value="<%= creditinfo[0].expiration %>" name="expiration">
+        </div>
+
+        <div>
+          <h1>CVV</h1>
+          <input type="tel" maxlength="3" value="<%= creditinfo[0].cvv %>" name="cvv">
+        </div>
+      </div>
+      <input type="submit" value="支払い情報を更新する">
+    </form>
+    
+    <button class="payment-info-update-back-btn"><a href="/payment_info">クレジットカード一覧に戻る</a></button>
+  </main>
+</body>

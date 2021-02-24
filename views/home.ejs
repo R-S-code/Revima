@@ -26,7 +26,12 @@
 					<img src="images/movie3.png" alt="" />
 				</li>
 			</ul>
-			<a href="/reserve_one"><button>予約する</button></a>
+			<% if(your_payment.length > 0) { %>
+				<a href="/reserve_one"><button>予約する</button></a>
+			<% } else {%>
+				<a href="/payment_info_add"><button>予約する(支払い情報を追加する)</button></a>
+			<% } %>
+	
 		</section>
 		<section class="home-vote">
 			<ul class="home-vote-list">
@@ -51,7 +56,11 @@
 				
 			</ul>
 			<div class="home-vote-btn-wrapper">
-				<a href="/vote"><button>投票する</button></a>
+				<% if(your_vote.length > 0) { %>
+					<button class="home-voted-btn">投票済みです</button>
+				<% } else {%>
+					<a href="/vote"><button class="home-vote-btn">投票する</button></a>
+				<% } %>
 			</div>
 		</section>
 	</main>
