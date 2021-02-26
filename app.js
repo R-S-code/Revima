@@ -591,16 +591,16 @@ app.get('/result', (req, res) => {
         connection.query(
           "SELECT count(electionid) as sumvotes, votes.movieid, title FROM votes JOIN movies ON votes.movieid = movies.movieid WHERE electionid = ? GROUP BY movieid ORDER BY sumvotes DESC LIMIT 3",
           [send_electionNum],
-          (error2, result)=>{
+          (error2, result2)=>{
             if(error2) {
               console.log("投票結果取得エラー");
               console.log(error2);
               res.redirect('/');
             } else {
               console.log("投票結果取得");
-              console.log(result);
+              console.log(result2);
               res.render('result.ejs', { 
-                movies: result,
+                movies: result2,
                 electionNum: send_electionNum
               })
             }
