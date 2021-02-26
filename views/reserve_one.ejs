@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-<<<<<<< HEAD
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,209 +9,178 @@
 		<link rel="stylesheet" type="text/css" href="/css/reserve_one.css" />
 	</head>
 	<body>
-		<%- include("./set/header"); %>
+		<%- 
+			include("./set/header");
+			
+			
+		%>
 		<main class="reserve-one-whole-wrapper">
 			<h1 class="reserve-one-title-title">タイトル</h1>
 			<select name="movie_title" class="reserve-one-selected-movie">
-				<% result[0].forEach(function (value, key) { %>
+				<% 
+					result[1] = result[1].reverse();
+					result[0].forEach(function (value, key) { 
+				%>
 
-				 <option value="<%= value.movieid %>" ><%= value.title %></option>
+				<option value="<%= value.movieid %>"><%= value.title %></option>
 				<% }); %>
 			</select>
 
 			<h1 class="reserve-one-title-dat">日時</h1>
 
 			<% 
-				result[0].forEach( function (titles){ %>
-					
-				<div id="movie_<%= titles.movieid %>" class="reserve-one-date-container" >
-				<select name="movie_date" id="select_<%= titles.movieid %>" class="reserve-one-selected-movie reserve-one-select-date">
-				<option value=""></option>
-				<%
-					let rows = result[1].filter( value =>
-						value.movieid === value.movieid
-					)
-					let filtered = dateFilter(rows);
+				result[0].forEach( function (titles){
+			%>
 
+			<div id="movie_<%= titles.movieid %>" class="reserve-one-date-container">
+				<select
+					name="movie_date"
+					id="select_<%= titles.movieid %>"
+					class="reserve-one-selected-movie reserve-one-select-date"
+				>
+					<option value=""></option>
+					<% 
+					let rows = result[1].filter(
+						value => value.movieid === value.movieid )
+						let filtered = dateFilter(rows);
 					filtered.forEach(function (value) { %>
-					<option value="<%= value %>"> <%= value %> </option>
-				<% }) %>
+					<option value="<%= value %>"><%= value %></option>
+					<% }) %>
 				</select>
-				<%
-				
-				filtered.forEach(function (value) { %>
-				<group id="radio_movie_<%= titles.movieid %>_date_<%= value %>" class="reserve-one-radio-group">
-				<%
-					let rows = result[1].filter( row =>
-						getDate(row.start) === value &&
-						row.movieid === titles.movieid
-					)
-					rows.forEach(function(row) {
+				<% filtered.forEach(function (value) { %>
+				<group
+					id="radio_movie_<%= titles.movieid %>_date_<%= value %>"
+					class="reserve-one-radio-group"
+				>
+					<% 
+					let rows = result[1].filter(
+					row => getDate(row.start) === value &&
+					row.movieid === titles.movieid )
+					rows.forEach(function(row) { 
 						let times = getTime( row.start )
-					
-				%>
-				<div class="reserve-one-input-radio-condainer">
-					<input type="radio" name="radio_movie_<%= row.movieid %>_date_<%= value %>" value="<%=row.playid%>"/>
-					<label> <%= row.playid %> </label>
-					<p><%= times[0] %>～<%= times[1]%></p>
-				</div>
-				<%
-					})
-				%>
+						%>
+					<div class="reserve-one-input-radio-container">
+						
+						<input
+							type="radio"
+							name="radio_movie_<%= row.movieid %>_date_<%= value %>"
+							id="radio_movie_<%= row.playid %>"
+							value="<%=row.playid%>"
+						/>
+						<label for="radio_movie_<%= row.playid %>">
+							<p class="reserve-one-input-radio-title"><%= titles.title %></p>
+						<p class="reserve-one-input-radio-order">販売中</p>
+						<p class="reserve-one-input-radio-date"><%= times[0] %></p>
+					</label>
+					</div>
+					<% }) %>
 				</group>
-				<%	
-			})
-			
-				%>
-					
-				</div>
-				<%
-			})
-
-				function dateFilter(rows){
-					
-					let dates = rows.map( function (value)  {
-						let result = getDate(value.start);
-						return result;
-					});
-					let filtered = dates.filter(function (x, i, self) {
-						return self.indexOf(x) === i;
-					});
-					return filtered;
-				}
-				function getDate(start){
-					let y = start.getFullYear();
-					let m = ("00" + (start.getMonth()+1)).slice(-2);
-					let d = ("00" + start.getDate()).slice(-2);
-					let result = y + "/" + m + "/" + d; 
-						return result;
-				}
-				function getTime(date){
-					let h = ("00" + date.getHours()).slice(-2);
-					let h2 = ("00" + (date.getHours()+2)).slice(-2);
-					let i = ("00" + date.getMinutes()).slice(-2);
-					let result = [(h + ":" + i),(h2 + ":" + i)]; 
-					return result;
-				}
-				
-
-				
-				%>
-
-			<button class="reserve-one-btn-next">座席選択に進む</button>
+				<% }) %>
+			</div>
+			<% })
+			 function dateFilter(rows){
+				  let dates = rows.map( function (value) {
+			let result = getDate(value.start);
+			return result; });
+			let filtered = dates.filter(
+				function (x, i, self) { 
+					return self.indexOf(x) === i; 
+				});
+			return filtered;
+		 } 
+		 function getDate(start){ 
+			 let y = start.getFullYear();
+			let m = ("00" + (start.getMonth()+1)).slice(-2);
+			 let d = ("00" + start.getDate()).slice(-2);
+			  let result = y + "/" + m + "/" + d;
+			  return result; }
+			function getTime(date){ 
+				let h = ("00" + date.getHours()).slice(-2);
+				let h2 = ("00" + (date.getHours()+2)).slice(-2);
+				let i = ("00" + date.getMinutes()).slice(-2);
+				let result = [(h + ":" + i),(h2 + ":" + i)];
+			return result;
+		} %>
+		<form action="/reserve_two">
+			<button class="reserve-one-btn-next"  type="submit" method="post" name="playid" value="8">座席選択に進む</button>
+		</form>
 		</main>
 		<script>
-			window.onload = ()=>{
-				const select_date_container = document.getElementsByClassName('reserve-one-date-container')
-				const select_date_list = document.getElementsByClassName('reserve-one-select-date')
-				const select_group_list = document.getElementsByClassName('reserve-one-radio-group')
-				
-				hideDate()
-				hideRadioGroup()
-				select_date_container[0].style.display = "block"
+			window.onload = () => {
+				const select_date_container = document.getElementsByClassName(
+					"reserve-one-date-container"
+				);
+				const select_date_list = document.getElementsByClassName(
+					"reserve-one-select-date"
+				);
+				const select_group_list = document.getElementsByClassName(
+					"reserve-one-radio-group"
+				);
 
-				const elem_title = document.getElementsByName('movie_title').item(0)
+				hideDate();
+				hideRadioGroup();
+				select_date_container[0].style.display = "block";
+
+				const elem_title = document.getElementsByName("movie_title").item(0);
 				let selected_playid = null;
 				let selected_input_name = null;
 
-				elem_title.onchange = function() {
-					let selectedId = elem_title.options[elem_title.selectedIndex].value
-					
-					hideDate()
-					document.getElementById('movie_'+selectedId).style.display = "block"
-				
-				}
-				Array.prototype.forEach.call(select_date_list, (elem)=>{
-				
-					elem.onchange = function() {
-					let movieId = elem_title.options[elem_title.selectedIndex].value
-					let date = this.options[this.selectedIndex].value
-					hideRadioGroup()
-					selected_input_name = "radio_movie_"+ movieId + "_date_"+ date;
-					document.getElementById(selected_input_name).style.display = "block"
-					
-					selected_playid = null;
-				}})
+				elem_title.onchange = function () {
+					let selectedId = elem_title.options[elem_title.selectedIndex].value;
 
-				Array.prototype.forEach.call(select_group_list, (elem)=>{
-					elem.onchange = function() {
-						let radio = document.getElementsByName(elem.id)
-					let checked=null;
-					for ( i=radio.length; i--; ) {
-						if ( radio[i].checked ) {
-							checked = radio[i].value ;
-						break ;
+					hideDate();
+					document.getElementById("movie_" + selectedId).style.display =
+						"block";
+					Array.prototype.forEach.call(select_date_list,(elem)=>{
+						elem.selectedIndex=0;
+						hideRadioGroup()
+					})
+				};
+				Array.prototype.forEach.call(select_date_list, (elem) => {
+					elem.onchange = function () {
+						let movieId = elem_title.options[elem_title.selectedIndex].value;
+						let date = this.options[this.selectedIndex].value;
+						hideRadioGroup();
+						selected_input_name = "radio_movie_" + movieId + "_date_" + date;
+						document.getElementById(selected_input_name).style.display =
+							"flex";
+
+						selected_playid = null;
+					};
+				});
+
+				Array.prototype.forEach.call(select_group_list, (elem) => {
+					elem.onchange = function () {
+						let radio = document.getElementsByName(elem.id);
+						let checked = null;
+						for (i = radio.length; i--; ) {
+							if (radio[i].checked) {
+								checked = radio[i].value;
+								break;
+							}
 						}
-					}
-					selected_playid = checked;
-					
-				}})
+						selected_playid = checked;
+						document.querySelector(".reserve-one-btn-next").value = selected_playid;
+					};
+				});
 
-				function hideDate(){
-					Array.prototype.forEach.call(select_date_container, (elem)=>{
+				function hideDate() {
+					Array.prototype.forEach.call(select_date_container, (elem) => {
 						elem.style.display = "none";
-					})
+					});
 				}
-				function hideRadioGroup(){
-					Array.prototype.forEach.call(select_group_list, (elem)=>{
+				function hideRadioGroup() {
+					Array.prototype.forEach.call(select_group_list, (elem) => {
 						elem.style.display = "none";
-					})
+					});
 				}
 
-				document.querySelector(".reserve-one-btn-next").onclick =
-				()=>{
-					
-					if(selected_playid===null){
-						return false
+				document.querySelector(".reserve-one-btn-next").onclick = () => {
+					if (selected_playid === null) {
+						return false;
 					}
-					else{
-						location.href = '/reserve_two?playid='+selected_playid
-					}
-				}
-			}
-
+				};
+			};
 		</script>
 	</body>
 </html>
-=======
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>予約</title>
-  <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
-  <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
-  <link rel="stylesheet" type="text/css" href="/css/reserve_one.css" />
-  <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
-</head>
-<body>
-  <%- include("./set/header"); %>
-  <main class="reserve-one-whole-wrapper">
-
-    <h1 class="reserve-one-title-title">タイトル</h1>
-    <select name="movie_title" class="reserve-one-selected-movie" id="select_title">¥
-      <option></option>
-      <option value="terminal1">ターミナル1</option>
-      <option value="terminal2">ターミナル2</option>
-      <option value="terminal4">ターミナル3</option>
-    </select>  
-   
-    <h1 class="reserve-one-title-dat">日時</h1>
-    <select name="movie_title" class="reserve-one-selected-movie">
-      <option value="terminal1">ターミナル1</option>
-      <option value="terminal2">ターミナル2</option>
-      <option value="terminal4">ターミナル3</option>
-    </select>
-
-    <a href="/reserve_two"><button class="reserve-one-btn-next">座席選択に進む</button></a>
-  </main>
-<script>
-  // let select_title = document.getElementById('select_title');
-  // select_title.addEventListener('change', ()=> {
-  //   axios.get('https://jsonplaceholder.typicode.com/todos/1')
-  // .then(res => console.log(res.data))
-  // }
- 
-</script>
-</body>
-</html>
->>>>>>> 23ed3b4d9b641c3c6aa94579146f1d151c0c8ce9

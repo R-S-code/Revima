@@ -1,5 +1,4 @@
 @import url("/css/set/var.css");
-
 .reserve-one-whole-wrapper {
   padding: 33px 20px 55px;
 }
@@ -7,12 +6,12 @@
 .reserve-one-title-title {
   font-weight: 700;
 }
+
 .reserve-one-selected-movie {
   background-image: url(../images/ico_select_arrow.png);
   background-repeat: no-repeat;
   background-size: 18px 8px;
   background-position: right 15px center;
-
   border: 1px solid var(--base-white);
   border-radius: 5px;
   cursor: pointer;
@@ -22,15 +21,96 @@
   width: 100%;
 }
 
+.reserve-one-selected-movie option {
+  color: var(--base-black);
+}
+
 .reserve-one-title-dat {
   font-weight: 700;
   margin-top: 20px;
 }
+
 .reserve-one-btn-next {
   background-color: var(--base-yellow);
   border-radius: 5px;
   color: var(--base-black);
   height: 40px;
+  margin-top: 40px;
   text-align: center;
   width: 100%;
+}
+
+.reserve-one-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 40px 0 0;
+}
+
+.reserve-one-input-radio-container {
+  height: 110px;
+  margin: 10px;
+  position: relative;
+  width: 110px;
+}
+
+.reserve-one-input-radio-container input[type="radio"] {
+  display: none;
+}
+
+.reserve-one-input-radio-container label {
+  border: solid 1px var(--base-white);
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.reserve-one-input-radio-title {
+  display: table-cell;
+  height: 110px;
+  padding: 0 5px;
+  text-align: center;
+  vertical-align: middle;
+  width: 110px;
+}
+
+.reserve-one-input-radio-container input[type="radio"]:checked+label {
+  background-color: var(--base-white);
+  color: var(--base-black);
+}
+
+.reserve-one-input-radio-container input[type="radio"]:checked+label .reserve-one-input-radio-date {
+  color: var(--base-black);
+}
+
+.reserve-one-input-radio-order {
+  color: #669B9E;
+  height: 1em;
+  position: absolute;
+  text-align: center;
+  top: 15px;
+  width: 110px;
+}
+
+.reserve-one-input-radio-order::before {
+  background-color: #669B9E;
+  border-radius: 8px;
+  content: "";
+  display: inline-block;
+  height: 13px;
+  transform: translate(-6px, 1px);
+  width: 13px;
+}
+
+.reserve-one-input-radio-container .reserve-one-input-radio-date {
+  font-size: 18px;
+  font-weight: bold;
+  height: 1em;
+  position: absolute;
+  top: 75px;
+  width: 110px;
 }
