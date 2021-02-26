@@ -29,5 +29,8 @@
   padding: 8px;
 }
 .header-profile img {
+  border-radius: 50%;
+  height: 32px;
+  object-fit: contain;
   width: 32px;
 }

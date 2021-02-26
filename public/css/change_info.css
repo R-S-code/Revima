@@ -36,7 +36,21 @@
 .change-info-profilepic-wrapper img {
   display: block;
 }
+/* ユーザー画像 */
 .change-info-profilepic {
+  border-radius: 50%;
+  height: 80px;
+  object-fit: contain;
+  width: 80px;
+}
+.change-info-select-icon {
+  display: none;
+}
+#icon_preview {
+  border-radius: 50%;
+  display: none;
+  height: 80px;
+  object-fit: contain;
   width: 80px;
 }
 .change-info-btn-add {

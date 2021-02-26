@@ -15,7 +15,7 @@
     <div class="mypage-info-board">
       <div class="mypage-first-container">
         <div class="mypage-user-icon">
-          <img src="/usericon/usericon1.png">
+          <img src="/usericon/<%= locals.userid %>.jpg"  class="change-info-profilepic" onerror="this.src='/usericon/default.jpg';"/ alt="no pic">
         </div>
         <p class="mypage-user-name"><%= locals.username %></p>
       </div>

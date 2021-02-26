@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const app = express();
 const session = require('express-session');
 const bcrypt = require('bcrypt');
+const multer = require('multer');
 
 app.set("view engine", "ejs");
 app.use(express.static('public'));
@@ -55,13 +56,13 @@ app.get('/', (req, res) => {
         }
       }
     )
-   
     var payment_result = null;
     connection.query(
       'SELECT * FROM payment WHERE userid = ?',
       [req.session.userid],
       (error, result)=> {
         if(result.length > 0) {
+          req.session.payment = result
           payment_result = result;
           res.render('home.ejs', {your_vote: votes_result, your_payment: payment_result});
         } else {
@@ -142,6 +143,7 @@ app.post('/regist',
   }
 )
 
+// 登録完了
 app.get('/regist_done', (req, res) => {
   res.render('regist_done.ejs');
 })
@@ -213,7 +215,22 @@ app.get('/mypage', (req, res) => {
 app.get('/change_info', (req, res) => {
   res.render('change_info.ejs', {result_message: []});
 })
-app.post('/change_info', (req, res) => {
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb)=> {
+    // 保存先
+    cb(null, './public/usericon')
+  },
+  filename: (req, file, cb)=> {
+    // 保存するファイルの名前
+    const userid = req.session.userid;
+    cb(null, `${userid}.jpg`)
+  }
+})
+
+const upload = multer({storage: storage});
+
+app.post('/change_info',  upload.single('file'), (req, res) => {
   const username = req.body.change_username;
   const userid = req.session.userid;
   connection.query(
@@ -441,11 +458,12 @@ app.get('/introduce_movie/:id', (req, res) => {
 })
 
 // 予約処理
+// 1
 app.get('/reserve_one', (req, res) => {
   req.session.playid = 1;
   res.render('reserve_one.ejs');
 })
-
+// 2
 app.get("/reserve_two", (req, res) => {
 	playid = req.session.playid;
 	connection.query(
@@ -462,6 +480,7 @@ app.get("/reserve_two", (req, res) => {
 		}
 	);
 });
+// 3
 app.get("/reserve_three", (req,res)=> {
   let selected_seats = req.query.seat;
   console.log(JSON.stringify(selected_seats));
@@ -528,7 +547,7 @@ app.post("/reserve_three",(req,res)=> {
     }
   )
 })
-
+// 4
 app.get('/reserve_done/:id', (req, res) => {
   const playid = req.params.id;
   connection.query(
@@ -547,13 +566,47 @@ app.get('/reserve_done/:id', (req, res) => {
  
 })
 
+// 投票結果
+app.get('/result', (req, res) => {
+  connection.query(
+    "SELECT MAX(electionid) FROM elections",
+    (error1, result1)=> {
+      if(error1) {
+        console.log("選挙番号取得エラー");
+        console.log(error1);
+        res.redirect('/');
+      } else {
+        console.log("選挙番号取得");
+        console.log(result1);
+        // 選挙番号取得後、上位映画取得
+        let send_electionNum = result1[0]["MAX(electionid)"] - 1; 
+        console.log("送る番号は" + send_electionNum);
+        connection.query(
+          "SELECT count(electionid) as sumvotes, votes.movieid, title FROM votes JOIN movies ON votes.movieid = movies.movieid WHERE electionid = ? GROUP BY movieid ORDER BY sumvotes DESC LIMIT 3",
+          [send_electionNum],
+          (error2, result)=>{
+            if(error2) {
+              console.log("投票結果取得エラー");
+              console.log(error2);
+              res.redirect('/');
+            } else {
+              console.log("投票結果取得");
+              console.log(result);
+              res.render('result.ejs', { 
+                movies: result,
+                electionNum: send_electionNum
+              })
+            }
+          }
+        )
+      }
+    }
+  )
+})
+
 // 管理者簡易画面
 app.get('/admin', (req, res) => {
   res.render('admin.ejs'); 
-})
-
-app.get('/result', (req, res) => {
-  res.render('result.ejs');
 })
 
 let port = 3300;

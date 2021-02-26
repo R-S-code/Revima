@@ -29,11 +29,13 @@
 			<% if(your_payment.length > 0) { %>
 				<a href="/reserve_one"><button>予約する</button></a>
 			<% } else {%>
-				<a href="/payment_info_add"><button>予約する(支払い情報を追加する)</button></a>
+				<a href="/payment_info_add"><button>予約する(支払い情報追加)</button></a>
 			<% } %>
 	
 		</section>
 		<section class="home-vote">
+			<p class="home-vote-endtime">投票終了まであと<span>3</span>日</p>
+			
 			<ul class="home-vote-list">
 				<li>
 					<img src="images/movie1.png" alt="" />
@@ -61,6 +63,9 @@
 				<% } else {%>
 					<a href="/vote"><button class="home-vote-btn">投票する</button></a>
 				<% } %>
+				
+				<!-- 前回の投票結果 -->
+				<a href="/result"><button class="home-election-result">前回の投票結果を見る</button></a>
 			</div>
 		</section>
 	</main>
