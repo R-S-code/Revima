@@ -210,6 +210,9 @@ app.get('/logout', (req, res) => {
 
 // マイページ処理
 app.get('/mypage', (req, res) => {
+  // const userid = req.session.userid;
+  // connection.query(
+  //   'SELECT * FROM play JOIN reserve ON play.playid = reserve.playid JOIN movies ON play.movieid = movies.movieid WHERE reserve.userid = ?',
   res.render('mypage.ejs');
 })
 app.get('/change_info', (req, res) => {
@@ -255,6 +258,7 @@ app.post('/change_info',  upload.single('file'), (req, res) => {
     }
   )
 })
+// 予約一覧
 app.get('/reserve_list', (req, res) => {
   const userid = req.session.userid;
   connection.query(
@@ -323,6 +327,7 @@ app.get('/payment_info', (req, res) => {
   );
 })
 
+// 支払い情報追加
 app.get('/payment_info_add', (req, res) => {
   res.render('payment_info_add.ejs');
 })
@@ -353,6 +358,7 @@ app.post('/payment_info_add', (req, res) => {
   );
 })
 
+// 支払い情報編集
 app.get('/payment_info_update/:id', (req, res) => {
   paymentid = req.params.id;
   connection.query(
@@ -394,6 +400,7 @@ app.post('/payment_info_update/:id', (req, res) => {
     }
   )
 })
+// 支払い情報削除
 app.get('/payment_info_delete/:id', (req, res) => {
   paymentid = req.params.id;
   connection.query(
