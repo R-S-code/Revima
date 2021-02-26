@@ -3,6 +3,13 @@
 .home-whole-wrapper {
   padding-top: 55px;
 }
+.home-vote-endtime {
+  margin: 0 0 40px 20px;
+}
+.home-vote-endtime span {
+  font-size: 18px;
+  font-weight: 700;
+}
 .home-greet {
   font-weight: 700;
   margin-left: 20px;
@@ -53,6 +60,7 @@
     width: 29.5vw;
   }
 }
+/* 投票しにいく */
 .home-vote-btn-wrapper {
   padding: 0 20px;
 }
@@ -71,6 +79,17 @@
   border-radius: 5px;
   color: var(--base-black);
   cursor: not-allowed;
+  display: block;
+  height: 40px;
+  margin: 25px auto 0;
+  text-align: center;
+  width: 100%;
+}
+/* 前回の結果を見にいく */
+.home-election-result {
+  background-color: var(--base-blue);
+  border-radius: 5px;
+  color: var(--base-black);
   display: block;
   height: 40px;
   margin: 25px auto 0;

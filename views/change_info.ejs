@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="/css/change_info.css" />
 </head>
 
+<body>
 <%- include("./set/header"); %>
 
 <main class="change-info-whole-wrapper">
@@ -17,17 +18,37 @@
       <p><%= result_message %></p>
     <% } %>
   </div>
-  <form method="post" action="/change_info">
+  <form method="post" action="/change_info" enctype="multipart/form-data">
     <p class="change-info-username-title">ユーザー名</p>
     <input type="text" class="change-info-input-username" value="<%= locals.username %>" name="change_username">
 
     <p class="change-info-profilepic-title">プロフィール画像</p>
     <div class="change-info-profilepic-wrapper">
-      <img src="/usericon/usericon1.png" class="change-info-profilepic">
-      <img src="/images/btn_add.png" class="change-info-btn-add">
+      <img src="/usericon/<%= locals.userid %>.jpg" class="change-info-profilepic" onerror="this.src='/usericon/default.jpg';"/ alt="no pic" id="now_ico">
+      <img id="icon_preview" alt="preview">
+      <input type="file" name="file" accept=".png, .jpg, .jpeg, .gif" id="select_icon" class="change-info-select-icon">
+      <label for="select_icon" class="change-icon-edit-btn" id="user_icon_edit_btn">
+        <img src="/images/btn_add.png" class="change-info-btn-add" >
+      </label>
     </div>
 
     <input type="submit" class="chage-info-change-btn" value="変更する"></input>
   </form>
   <p class="change-info-mypage-btn"><a href="/mypage">マイページに戻る</a></p>
 </main>
+<script>
+  const now_ico = document.getElementById("now_ico");
+  const select_icon = document.getElementById("select_icon");
+  const icon_preview = document.getElementById("icon_preview");
+
+  select_icon.addEventListener("change", (e)=> {
+    const reader = new FileReader();
+    reader.onload = (e)=> {
+      icon_preview.setAttribute("src", e.target.result);
+      icon_preview.style.display = "block";
+      now_ico.style.display = "none";
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+</script>
+</body>

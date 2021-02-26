@@ -14,27 +14,27 @@
     <form action="/payment_info_add" method="post">
       <h1 class="payment-info-add-credit-title">クレジットカード番号</h1>
       <div class="payment-info-add-inputnum-wrapper">
-        <input type="tel" maxlength="4" placeholder="0000" name="creditnum">
+        <input type="tel" maxlength="4" placeholder="0000" name="creditnum" required>
         <span>-</span>
-        <input type="tel" maxlength="4" placeholder="0000" name="creditnum">
+        <input type="tel" maxlength="4" placeholder="0000" name="creditnum" required>
         <span>-</span>
-        <input type="tel" maxlength="4" placeholder="0000" name="creditnum">
+        <input type="tel" maxlength="4" placeholder="0000" name="creditnum" required>
         <span>-</span>
-        <input type="tel" maxlength="4" placeholder="0000" name="creditnum">
+        <input type="tel" maxlength="4" placeholder="0000" name="creditnum" required>
       </div>
 
       <h1 class="payment-info-add-name-title">クレジットカード氏名</h1>
-      <input type="text" class="payment-info-add-inputname" placeholder="Revima Revima" name="yourname">
+      <input type="text" class="payment-info-add-inputname" placeholder="Revima Revima" name="yourname" required>
 
       <div class="payment-info-add-contets-wrapper">
         <div>
           <h1>有効期限</h1>
-          <input type="text" maxlength="5" placeholder="22/02" name="expiration">
+          <input type="text" maxlength="5" placeholder="22/02" name="expiration" required>
         </div>
 
         <div>
           <h1>CVV</h1>
-          <input type="tel" maxlength="3" placeholder="000" name="cvv">
+          <input type="tel" maxlength="3" placeholder="000" name="cvv" required>
         </div>
       </div>
       <input type="submit" value="支払い情報を追加する">

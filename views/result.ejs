@@ -19,38 +19,41 @@
         <div class="result-ranking1"><img src="/images/ranking1.png" alt="一位"></div>
         
         <div class="result-no1-movie-img">
-          <img src="/images/movie1.png" alt="一位">
+          <img src="/movies/mov<%= movies[0].movieid %>.png" alt="一位">
         </div>
-          <h2>ターミナル</h2>
-          <p>1352票</p>
+          <h2><%= movies[0].title %></h2>
+          <p><%= movies[0].sumvotes %>票</p>
         </div>
-       
+      
       </div>
       <div class="result-box">
         <div class="result-no2">
           <div class="result-ranking2"><img src="/images/ranking2.png" alt="2位"></div>
           <div class="result-no2-movie-img">
-            <img src="/images/movie2.png" alt="二位">
+            <img src="/movies/mov<%= movies[1].movieid %>.png" alt="二位">
           </div>
           <div class="result-text">
-            <h2>バックトゥザフューチャー</h2>
-            <p>1163票</p>
+            <h2><%= movies[1].title %></h2>
+            <p><%= movies[1].sumvotes %>票</p>
           </div>
         </div>
         
         <div class="result-no3">
           <div class="result-ranking3"><img src="/images/ranking3.png" alt="3位"></div>
           <div class="result-no3-movie-img">
-            <img src="/images/movie3.png" alt="三位">
+            <img src="/movies/mov<%= movies[2].movieid %>.png" alt="三位">
           </div>
           <div class="result-text">
-            <h2>ファイトクラブ</h2>
-            <p>893票</p>
+            <h2><%= movies[2].title %></h2>
+            <p><%= movies[2].sumvotes %>票</p>
           </div>
         </div>
       </div>
 
-      <a href="/reserve_one"><button class="result-reservation">映画を予約する</button></a>
+      
+        <a href="/reserve_one"><button class="result-reservation">映画を予約する</button></a>
+			
+     
     </main>
 </body>
 </html>
