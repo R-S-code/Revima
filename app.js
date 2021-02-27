@@ -472,7 +472,7 @@ app.get("/introduce_movie/:id", (req, res) => {
 // 1
 app.get("/reserve_one", (req, res) => {
 	connection.query(
-		"SELECT DISTINCT title, m.movieid FROM movies m inner join play p on m.movieid = p.movieid; select playid,movieid,start from play order by playid desc limit 36; select count(playid) from reserve group by playid",
+		"SELECT DISTINCT title, m.movieid FROM movies m INNER JOIN play p on m.movieid = p.movieid; select playid,movieid,start from play order by playid desc limit 36; select count(playid) from reserve group by playid",
 		(error, result) => {
 			req.session.playid = 1;
 			res.render("reserve_one.ejs", { result: result });
