@@ -97,7 +97,13 @@
 }
 .reserve-two-line-wrapper input {
   appearance: none;
+  -webkit-appearance: none;
   display: block;
+}
+/* スマホ用に消す */
+.reserve-two-line-wrapper span {
+  appearance: none;
+  -webkit-appearance: none;
 }
 .reserve-two-line-wrapper input:before {
   background-color: var(--base-blue);

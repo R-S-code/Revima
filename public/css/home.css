@@ -53,6 +53,7 @@
   width: 112%;
 }
 .home-vote-list li img {
+  height: 150px;
   width: 100px;
 }
 @media screen and (max-width: 340px) {
@@ -87,7 +88,7 @@
 }
 /* 前回の結果を見にいく */
 .home-election-result {
-  background-color: var(--base-blue);
+  background-color: var(--base-yellow);
   border-radius: 5px;
   color: var(--base-black);
   display: block;

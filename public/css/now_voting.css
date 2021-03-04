@@ -1,0 +1,33 @@
+@import url("/css/set/var.css");
+
+.now-voting-whole-wrapper {
+  padding: 40px 20px;
+}
+
+.now-voting-movies-container {
+  align-items: center;
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-between;
+}
+.now-voting-title {
+  font-size: 20px;
+  margin-right: 20px;
+}
+.now-voting-voting {
+  font-size: 24px;
+  font-weight: bold;
+}
+.now-voting-comment {
+  margin-top: 160px;
+}
+.now-voting-back-btn {
+  background-color: var(--base-yellow);
+  border-radius: 5px;
+  color: var(--base-black);
+  display: block;
+  height: 40px;
+  margin: 30px auto 0;
+  text-align: center;
+  width: 100%;
+}

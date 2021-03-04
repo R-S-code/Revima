@@ -65,10 +65,17 @@
   height: 28px;
   width: 28px;
 }
+/* ラジオボタンを消す */
 .vote-select-movie-container div input {
   appearance: none;
+  -webkit-appearance: none;
   display: block;
   margin-top: 10px;
+}
+
+.vote-select-movie-container div span {
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .vote-select-movie-wrapper input[type="submit"] {

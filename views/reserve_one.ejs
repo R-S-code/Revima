@@ -11,7 +11,6 @@
 	<body>
 		<%- include("./set/header"); %>
 		<main class="reserve-one-whole-wrapper">
-			<!-- 作品 -->
 			<h1 class="reserve-one-title-title">タイトル</h1>
 			<select name="movie_title" class="reserve-one-selected-movie">
 				<% result[1] = result[1].reverse(); %>
@@ -22,6 +21,7 @@
 
 			<h1 class="reserve-one-title-dat">日時</h1>
 			<% result[0].forEach((titles)=> { %>
+
 			<div id="movie_<%= titles.movieid %>" class="reserve-one-date-container">
 				<select
 					name="movie_date"
@@ -30,10 +30,12 @@
 				>
 					<option value=""></option>
 					<% 
-					let rows = result[1].filter(
-						value => value.movieid === value.movieid )
-					let filtered = dateFilter(rows);
-					filtered.forEach((value)=> { %>
+						let rows = result[1].filter(
+							value => value.movieid === value.movieid 
+						)
+						let filtered = dateFilter(rows);
+						filtered.forEach((value)=> { 
+					%>
 					<option value="<%= value %>"><%= value %></option>
 					<% }) %>
 				</select>
@@ -42,15 +44,15 @@
 					id="radio_movie_<%= titles.movieid %>_date_<%= value %>"
 					class="reserve-one-radio-group"
 				>
-					<% 
+				<% 
 					let rows = result[1].filter(
-					row => getDate(row.start) === value &&
-					row.movieid === titles.movieid )
+						row => getDate(row.start) === value &&
+						row.movieid === titles.movieid 
+					)
 					rows.forEach(function(row) { 
 						let times = getTime( row.start )
-						%>
+				%>
 					<div class="reserve-one-input-radio-container">
-						
 						<input
 							type="radio"
 							name="radio_movie_<%= row.movieid %>_date_<%= value %>"
@@ -58,8 +60,8 @@
 							value="<%=row.playid%>"
 						/>
 						<label for="radio_movie_<%= row.playid %>">
-							<p class="reserve-one-input-radio-order">販売中</p>
 							<p class="reserve-one-input-radio-title"><%= titles.title %></p>
+							<p class="reserve-one-input-radio-order">販売中</p>
 							<p class="reserve-one-input-radio-date"><%= times[0] %></p>
 						</label>
 					</div>
@@ -78,101 +80,102 @@
 						return self.indexOf(x) === i; 
 					});
 				return filtered;
-				} 
-				function getDate(start){ 
-					let y = start.getFullYear();
-					let m = ("00" + (start.getMonth()+1)).slice(-2);
-					let d = ("00" + start.getDate()).slice(-2);
-					let result = y + "/" + m + "/" + d;
-					return result; }
-				function getTime(date){ 
-					let h = ("00" + date.getHours()).slice(-2);
-					let h2 = ("00" + (date.getHours()+2)).slice(-2);
-					let i = ("00" + date.getMinutes()).slice(-2);
-					let result = [(h + ":" + i),(h2 + ":" + i)];
-				return result;
-			} %>
-			<form action="/reserve_two">
-				<p class="reserve-one-nowstep">1/3</p>
-				<button class="reserve-one-btn-next"  type="submit" method="post" name="playid" value="8">座席選択に進む</button>
-			</form>
-	</main>
-<script>
-	window.onload = () => {
-		const select_date_container = document.getElementsByClassName(
-			"reserve-one-date-container"
-		);
-		const select_date_list = document.getElementsByClassName(
-			"reserve-one-select-date"
-		);
-		const select_group_list = document.getElementsByClassName(
-			"reserve-one-radio-group"
-		);
+			} 
+		 	function getDate(start){ 
+				let y = start.getFullYear();
+				let m = ("00" + (start.getMonth()+1)).slice(-2);
+				let d = ("00" + start.getDate()).slice(-2);
+			  let result = y + "/" + m + "/" + d;
+			  return result; }
+			function getTime(date){ 
+				let h = ("00" + date.getHours()).slice(-2);
+				let h2 = ("00" + (date.getHours()+2)).slice(-2);
+				let i = ("00" + date.getMinutes()).slice(-2);
+				let result = [(h + ":" + i),(h2 + ":" + i)];
+			return result;
+		} %>
+	
+		<p class="reserve-one-nowstep">1/3</p>
+		<form action="/reserve_two">
+			<button class="reserve-one-btn-next"  type="submit" name="playid" value="8">座席選択に進む</button>
+		</form>
+		</main>
+		<script>
+			window.onload = () => {
+				const select_date_container = document.getElementsByClassName(
+					"reserve-one-date-container"
+				);
+				const select_date_list = document.getElementsByClassName(
+					"reserve-one-select-date"
+				);
+				const select_group_list = document.getElementsByClassName(
+					"reserve-one-radio-group"
+				);
 
-		hideDate();
-		hideRadioGroup();
-		select_date_container[0].style.display = "block";
-
-		const elem_title = document.getElementsByName("movie_title").item(0);
-		let selected_playid = null;
-		let selected_input_name = null;
-
-		elem_title.onchange = function () {
-			let selectedId = elem_title.options[elem_title.selectedIndex].value;
-
-			hideDate();
-			document.getElementById("movie_" + selectedId).style.display =
-				"block";
-			Array.prototype.forEach.call(select_date_list,(elem)=>{
-				elem.selectedIndex=0;
-				hideRadioGroup()
-			})
-		};
-		Array.prototype.forEach.call(select_date_list, (elem) => {
-			elem.onchange = function () {
-				let movieId = elem_title.options[elem_title.selectedIndex].value;
-				let date = this.options[this.selectedIndex].value;
+				hideDate();
 				hideRadioGroup();
-				selected_input_name = "radio_movie_" + movieId + "_date_" + date;
-				document.getElementById(selected_input_name).style.display =
-					"flex";
+				select_date_container[0].style.display = "block";
 
-				selected_playid = null;
-			};
-		});
+				const elem_title = document.getElementsByName("movie_title").item(0);
+				let selected_playid = null;
+				let selected_input_name = null;
 
-		Array.prototype.forEach.call(select_group_list, (elem) => {
-			elem.onchange = function () {
-				let radio = document.getElementsByName(elem.id);
-				let checked = null;
-				for (i = radio.length; i--; ) {
-					if (radio[i].checked) {
-						checked = radio[i].value;
-						break;
-					}
+				elem_title.onchange = function () {
+					let selectedId = elem_title.options[elem_title.selectedIndex].value;
+
+					hideDate();
+					document.getElementById("movie_" + selectedId).style.display =
+						"block";
+					Array.prototype.forEach.call(select_date_list,(elem)=>{
+						elem.selectedIndex=0;
+						hideRadioGroup()
+					})
+				};
+				Array.prototype.forEach.call(select_date_list, (elem) => {
+					elem.onchange = function () {
+						let movieId = elem_title.options[elem_title.selectedIndex].value;
+						let date = this.options[this.selectedIndex].value;
+						hideRadioGroup();
+						selected_input_name = "radio_movie_" + movieId + "_date_" + date;
+						document.getElementById(selected_input_name).style.display =
+							"flex";
+
+						selected_playid = null;
+					};
+				});
+
+				Array.prototype.forEach.call(select_group_list, (elem) => {
+					elem.onchange = function () {
+						let radio = document.getElementsByName(elem.id);
+						let checked = null;
+						for (i = radio.length; i--; ) {
+							if (radio[i].checked) {
+								checked = radio[i].value;
+								break;
+							}
+						}
+						selected_playid = checked;
+						document.querySelector(".reserve-one-btn-next").value = selected_playid;
+					};
+				});
+
+				function hideDate() {
+					Array.prototype.forEach.call(select_date_container, (elem) => {
+						elem.style.display = "none";
+					});
 				}
-				selected_playid = checked;
-				document.querySelector(".reserve-one-btn-next").value = selected_playid;
+				function hideRadioGroup() {
+					Array.prototype.forEach.call(select_group_list, (elem) => {
+						elem.style.display = "none";
+					});
+				}
+
+				document.querySelector(".reserve-one-btn-next").onclick = () => {
+					if (selected_playid === null) {
+						return false;
+					}
+				};
 			};
-		});
-
-		function hideDate() {
-			Array.prototype.forEach.call(select_date_container, (elem) => {
-				elem.style.display = "none";
-			});
-		}
-		function hideRadioGroup() {
-			Array.prototype.forEach.call(select_group_list, (elem) => {
-				elem.style.display = "none";
-			});
-		}
-
-		document.querySelector(".reserve-one-btn-next").onclick = () => {
-			if (selected_playid === null) {
-				return false;
-			}
-		};
-	};
-</script>
-</body>
+		</script>
+	</body>
 </html>

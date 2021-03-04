@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>result</title>
+  <link rel="stylesheet" type="text/css" href="/css/set/destyle.css" />
+  <link rel="stylesheet" type="text/css" href="/css/set/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/now_voting.css" />
+</head>
+
+<body>
+  <%- include("./set/header"); %>
+  <main class="now-voting-whole-wrapper">
+    <div class="now-voting-movies-wrapper">
+      <% movies.forEach((movie)=>{ %>
+      <div class="now-voting-movies-container">
+        <p class="now-voting-title"><%= movie.title %></p>
+        <p class="now-voting-voting"><%= movie.sumvotes %>票</p>
+      </div>
+      <% }) %>
+    </div>
+
+    <p class="now-voting-comment">記載のない映画は、得票数が0です</p>
+
+    <a href="/"><button class="now-voting-back-btn">HOMEに戻る</button></a>
+  </main>
+</body>
+</html>

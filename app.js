@@ -135,8 +135,11 @@ app.post(
 						errors.push("エラーが発生しました");
 						res.render("regist.ejs", { errors: errors });
 					} else {
-						req.session.userid = results.userid;
+            console.log("登録完了!")
+						req.session.userid = results.insertId;
 						req.session.username = username;
+						console.log(results.userid);
+						console.log(username);
 						res.redirect("/regist_done");
 					}
 				}
@@ -215,11 +218,35 @@ app.get("/logout", (req, res) => {
 // マイページ処理
 
 app.get('/mypage', (req, res) => {
-  // const userid = req.session.userid;
-  // connection.query(
-  //   'SELECT * FROM play JOIN reserve ON play.playid = reserve.playid JOIN movies ON play.movieid = movies.movieid WHERE reserve.userid = ?',
-  res.render('mypage.ejs');
-})
+  const userid = req.session.userid;
+	connection.query(
+		"SELECT MIN(start) FROM play JOIN reserve ON play.playid = reserve.playid WHERE userid = ?",
+		[userid],
+		(error1, result1)=>{
+			if(error1) {
+				console.log("最近の上映時間取得エラー")
+				console.log(error1);
+			} else {
+				const min_start = result1[0]["MIN(start)"];
+				console.log(min_start);
+				connection.query(
+					"SELECT title, start FROM play JOIN reserve ON play.playid = reserve.playid JOIN movies ON play.movieid = movies.movieid WHERE start = ? LIMIT 1",
+					[min_start],
+					(error2, result2)=>{
+						if(error2) {
+							console.log("最近の上映情報取得エラー")
+							console.log(error2);
+						} else {
+							console.log(result2);
+							res.render("mypage.ejs", {reserve: result2});
+						}
+					}
+				)
+			}
+		}
+	)
+});
+
 app.get('/change_info', (req, res) => {
   res.render('change_info.ejs', {result_message: []});
 })
@@ -483,19 +510,32 @@ app.get("/reserve_one", (req, res) => {
 // 2
 app.get("/reserve_two", (req, res) => {
 	let playid = req.query.playid;
-	connection.query(
-		"select seat from reserve where playid = ?",
-		[playid],
-		(error, results) => {
-			if (error) {
-				console.log("座席情報取得エラー");
-				console.log(error);
+  req.session.playid = playid;
+  connection.query(
+    "SELECT * FROM play JOIN movies ON play.movieid = movies.movieid WHERE playid = ?",
+    [playid],
+    (error1, result1) => {
+			if (error1) {
+				console.log("映画情報取得エラー");
+				console.log(error1);
 			} else {
-				console.log(results);
-				res.render("reserve_two.ejs", { reserved_seats: results });
-			}
-		}
-	);
+        console.log("映画情報:" + result1);
+        connection.query(
+          "SELECT seat FROM reserve where playid = ?",
+          [playid],
+          (error2, results2) => {
+            if (error2) {
+              console.log("座席情報取得エラー");
+              console.log(error2);
+            } else {
+              console.log(results2);
+              res.render("reserve_two.ejs", { reserved_seats: results2, movieinfo: result1});
+            }
+          }
+        );
+      }
+    }
+  )
 });
 
 // 3
@@ -578,6 +618,7 @@ app.get("/reserve_done/:id", (req, res) => {
 			} else {
 				console.log(result);
 				res.render("reserve_done.ejs", { info: result });
+        req.session.playid = playid;
 			}
 		}
 	);
@@ -621,10 +662,45 @@ app.get('/result', (req, res) => {
   )
 })
 
-app.get("/admin", (req, res) => {
-	res.render("admin.ejs");
+// 現在の票数
+app.get("/now_voting", (req, res) => {
+
+  connection.query(
+    "SELECT MAX(electionid) FROM elections",
+    (error1, result1)=> {
+      if(error1) {
+        console.log("選挙番号取得エラー");
+        console.log(error1);
+        res.redirect('/');
+      } else {
+        console.log("選挙番号取得");
+        console.log(result1);
+        // 選挙番号取得後、上位映画取得
+        let send_electionNum = result1[0]["MAX(electionid)"];
+        console.log("送る番号は" + send_electionNum);
+        connection.query(
+          "SELECT count(electionid) as sumvotes, votes.movieid, title FROM votes JOIN movies ON votes.movieid = movies.movieid WHERE electionid = ? GROUP BY movieid ORDER BY sumvotes DESC",
+          [send_electionNum],
+          (error2, result2)=>{
+            if(error2) {
+              console.log("投票結果取得エラー");
+              console.log(error2);
+              res.redirect('/');
+            } else {
+              console.log("投票結果取得");
+              console.log(result2);
+              res.render('now_voting.ejs', { 
+                movies: result2,
+                electionNum: send_electionNum
+              })
+            }
+          }
+        )
+      }
+    }
+  )
 });
 
-let port = 3300;
+const port = 3300;
 console.log(`running ${port}`);
-app.listen(port);
+app.listen(process.env.PORT || port);
